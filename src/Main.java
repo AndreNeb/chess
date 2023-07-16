@@ -208,6 +208,7 @@ public class Main {
                         // TODO Wenn man jemanden geschlagen hat, und man dann wieder wegfährt, fährt man mit der geschlagenen Figur...
 
                         Spielfiguren[i].setID(eingabeZielPosition);
+                        System.out.println("Hello Worl");
 
                     }
 
