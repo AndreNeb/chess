@@ -208,21 +208,6 @@ public class Main {
                         }
 
 
-//                        String codeDerUrsprünglichenPosition = converter(eingabeUrsprünglichePosition);
-//                        String[] array = codeDerUrsprünglichenPosition.split(" ");
-//                        int iIndex = Integer.parseInt(array[0]);
-//                        int jIndex = Integer.parseInt(array[1]);
-//                        Schachbrett[iIndex][jIndex] = " ";
-//
-//                        String codeDerZielPosition = converter(eingabeZielPosition);
-//                        String[] array2 = codeDerZielPosition.split(" ");
-//                        int iIndex2 = Integer.parseInt(array2[0]);
-//                        int jIndex2 = Integer.parseInt(array2[1]);
-//                        Schachbrett[iIndex2][jIndex2] = Spielfiguren[i].getSymbol();
-
-
-                        // Spielfiguren[i].setID(eingabeZielPosition);
-
                     }
 
                 }
