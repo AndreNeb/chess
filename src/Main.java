@@ -3,6 +3,9 @@
 // TODO Redo durch r-Eingabe
 // TODO Beschränkung wo die Figuren hinfahren
 // TODO Timer / Schachuhr
+// TODO Weiß und grün sollen sich abwechseln
+
+// Bisheriger Projektaufwand: 12 h
 
 import java.util.Scanner;
 
@@ -175,40 +178,50 @@ public class Main {
                         for (int x = 0; x < Spielfiguren.length; x++) {
                             if (Spielfiguren[x].getID().equals(eingabeZielPosition)) {
 
-                                System.out.println(Spielfiguren[i].getName() + " " + Spielfiguren[i].getFarbe() + " hat " + Spielfiguren[x].getName() + " " + Spielfiguren[x].getFarbe() + " an der Stelle " + Spielfiguren[x].getID() + " geschlagen!");
+                                if (Spielfiguren[i].getFarbe().equals(Spielfiguren[x].getFarbe())) {
+                                    System.out.println("Sie können keine eigene Figur schlagen!");
+                                    System.out.println();
+                                    break;
+                                } else {
+
+                                    System.out.println(Spielfiguren[i].getName() + " " + Spielfiguren[i].getFarbe() + " hat " + Spielfiguren[x].getName() + " " + Spielfiguren[x].getFarbe() + " an der Stelle " + Spielfiguren[x].getID() + " geschlagen!");
+                                    System.out.println();
+                                    Spielfiguren[x].setID("GESCHLAGENE FIGUR"); // ID auf irgendwas setzen, sonst findet man wenn man das Array durchgeht womöglich die geschlagene Figur zuerst und dann erscheint demnach das Symbol der geschlagenen Figur wieder
 
 
-//                                String z = converter(eingabeZielPosition);
-//                                String[] array4 = z.split(" ");
-//                                int iIndex4 = Integer.parseInt(array4[0]);
-//                                int jIndex4 = Integer.parseInt(array4[1]);
-//                                Schachbrett[iIndex4][jIndex4] = Spielfiguren[i].getSymbol();
+                                    String codeDerUrsprünglichenPosition = converter(eingabeUrsprünglichePosition);
+                                    String[] array = codeDerUrsprünglichenPosition.split(" ");
+                                    int iIndex = Integer.parseInt(array[0]);
+                                    int jIndex = Integer.parseInt(array[1]);
+                                    Schachbrett[iIndex][jIndex] = " ";
+                                    String codeDerZielPosition = converter(eingabeZielPosition);
+                                    String[] array2 = codeDerZielPosition.split(" ");
+                                    int iIndex2 = Integer.parseInt(array2[0]);
+                                    int jIndex2 = Integer.parseInt(array2[1]);
+                                    Schachbrett[iIndex2][jIndex2] = Spielfiguren[i].getSymbol();
 
 
+                                    Spielfiguren[i].setID(eingabeZielPosition);
+
+                                }
                             }
                         }
 
 
+//                        String codeDerUrsprünglichenPosition = converter(eingabeUrsprünglichePosition);
+//                        String[] array = codeDerUrsprünglichenPosition.split(" ");
+//                        int iIndex = Integer.parseInt(array[0]);
+//                        int jIndex = Integer.parseInt(array[1]);
+//                        Schachbrett[iIndex][jIndex] = " ";
+//
+//                        String codeDerZielPosition = converter(eingabeZielPosition);
+//                        String[] array2 = codeDerZielPosition.split(" ");
+//                        int iIndex2 = Integer.parseInt(array2[0]);
+//                        int jIndex2 = Integer.parseInt(array2[1]);
+//                        Schachbrett[iIndex2][jIndex2] = Spielfiguren[i].getSymbol();
 
 
-
-                        String codeDerUrsprünglichenPosition = converter(eingabeUrsprünglichePosition);
-                        String[] array = codeDerUrsprünglichenPosition.split(" ");
-                        int iIndex = Integer.parseInt(array[0]);
-                        int jIndex = Integer.parseInt(array[1]);
-                        Schachbrett[iIndex][jIndex] = " ";
-
-
-
-                        String codeDerZielPosition = converter(eingabeZielPosition);
-                        String[] array2 = codeDerZielPosition.split(" ");
-                        int iIndex2 = Integer.parseInt(array2[0]);
-                        int jIndex2 = Integer.parseInt(array2[1]);
-                        Schachbrett[iIndex2][jIndex2] = Spielfiguren[i].getSymbol();
-                        // TODO Wenn man jemanden geschlagen hat, und man dann wieder wegfährt, fährt man mit der geschlagenen Figur...
-
-                        Spielfiguren[i].setID(eingabeZielPosition);
-                        System.out.println("Hello Worl");
+                        // Spielfiguren[i].setID(eingabeZielPosition);
 
                     }
 
