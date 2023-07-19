@@ -1,11 +1,11 @@
 // Im Code verwendete Besonderheiten: OOP, Mehrdimensionale Arrays, Schleifen & Verzweigungen, switch-case
 // TODO GUI
-// TODO Redo durch r-Eingabe
+// TODO Redo durch r-Eingabe (durch jedes zweite mal (x%2 ==0) durchgehen durch die while schleife einen Clone von Schachbrett und Spielfiguren erstellen und wenn r gedrückt wurde dann den Originalen die Clone zuweisen
 // TODO Beschränkung wo die Figuren hinfahren
 // TODO Timer / Schachuhr
-// TODO Weiß und grün sollen sich abwechseln
 
-// Bisheriger Projektaufwand: 12 h
+
+// Bisheriger Projektaufwand: 13 h
 
 import java.util.Scanner;
 
@@ -134,7 +134,10 @@ public class Main {
     }
 
     public static void moveFigures(Spielfigur[] Spielfiguren, String[][] Schachbrett) {
-
+        int vorübergehenderFarbenCounter = 0;
+        boolean colorError = false;
+        System.out.println();
+        System.out.println("Weiß beginnt!");
         while (true) {
             Scanner sc = new Scanner(System.in);
             System.out.println();
@@ -144,6 +147,40 @@ public class Main {
                 System.out.println("Die Partie ist beendet!");
                 break;
             }
+
+            String convertedEingabeUrsprünglichePosition = converter(eingabeUrsprünglichePosition);
+            String[] convertedEingabeUrsprünglichePositionArray = convertedEingabeUrsprünglichePosition.split(" ");
+            if (Schachbrett[Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0])][Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1])].equals(" ")) {
+                System.out.println("An dieser Stelle befindet sich keine Figur!");
+                continue;
+            }
+
+
+            for (int u = 0; u < Spielfiguren.length; u++) {
+                if (Spielfiguren[u].getID().equals(eingabeUrsprünglichePosition)) {
+                    if (vorübergehenderFarbenCounter == 0 && Spielfiguren[u].getFarbe().equals("Weiß")) {
+                        vorübergehenderFarbenCounter++;
+                    } else if (vorübergehenderFarbenCounter % 2 == 0 && Spielfiguren[u].getFarbe().equals("Weiß")) {
+                        vorübergehenderFarbenCounter++;
+                    } else if (vorübergehenderFarbenCounter % 2 != 0 && Spielfiguren[u].getFarbe().equals("Grün")) {
+                        vorübergehenderFarbenCounter++;
+                    } else {
+                        if (Spielfiguren[u].getFarbe().equals("Weiß")) {
+                            System.out.println("Grün ist jetzt am Zug!");
+                            colorError = true;
+                        }
+                        if (Spielfiguren[u].getFarbe().equals("Grün")) {
+                            System.out.println("Weiß ist jetzt am Zug!");
+                            colorError = true;
+                        }
+                    }
+                }
+            }
+            if (colorError) {
+                colorError = false;
+                continue;
+            }
+
             System.out.println("Wohin möchtest du sie bewegen?: ");
             String eingabeZielPosition = sc.next();
 
