@@ -3,11 +3,14 @@
 // TODO Redo durch r-Eingabe (durch jedes zweite mal (x%2 ==0) durchgehen durch die while schleife einen Clone von Schachbrett und Spielfiguren erstellen und wenn r gedrückt wurde dann den Originalen die Clone zuweisen
 // TODO Beschränkung wo die Figuren hinfahren
 // TODO Timer / Schachuhr
+// TODO Schachbrett soll sich so drehen, wer gerade dran ist; also wenn grün dran ist ist grün unten
+// TODO Man soll nur richtige Werte wie zB A1 eingeben können
 
 
 // Bisheriger Projektaufwand: 13 h
 
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
@@ -138,6 +141,8 @@ public class Main {
         boolean colorError = false;
         System.out.println();
         System.out.println("Weiß beginnt!");
+
+
         while (true) {
             Scanner sc = new Scanner(System.in);
             System.out.println();
@@ -147,7 +152,6 @@ public class Main {
                 System.out.println("Die Partie ist beendet!");
                 break;
             }
-
             String convertedEingabeUrsprünglichePosition = converter(eingabeUrsprünglichePosition);
             String[] convertedEingabeUrsprünglichePositionArray = convertedEingabeUrsprünglichePosition.split(" ");
             if (Schachbrett[Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0])][Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1])].equals(" ")) {
