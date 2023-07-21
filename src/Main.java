@@ -1,16 +1,12 @@
 // Im Code verwendete Besonderheiten: OOP, Mehrdimensionale Arrays, Schleifen & Verzweigungen, switch-case
-// TODO GUI
-// TODO Redo durch r-Eingabe (durch jedes zweite mal (x%2 ==0) durchgehen durch die while schleife einen Clone von Schachbrett und Spielfiguren erstellen und wenn r gedrückt wurde dann den Originalen die Clone zuweisen
 // TODO Beschränkung wo die Figuren hinfahren
 // TODO Timer / Schachuhr
 // TODO Schachbrett soll sich so drehen, wer gerade dran ist; also wenn grün dran ist ist grün unten
-// TODO Man soll nur richtige Werte wie zB A1 eingeben können
 
 
-// Bisheriger Projektaufwand: 13 h
+// Bisheriger Projektaufwand: 15 h
 
 import java.util.Scanner;
-import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
@@ -144,6 +140,8 @@ public class Main {
 
 
         while (true) {
+            boolean isInSpielfiguren = false;
+
             Scanner sc = new Scanner(System.in);
             System.out.println();
             System.out.println("Gib die Position der Figur ein, die du bewegen möchtest: ");
@@ -156,6 +154,16 @@ public class Main {
             String[] convertedEingabeUrsprünglichePositionArray = convertedEingabeUrsprünglichePosition.split(" ");
             if (Schachbrett[Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0])][Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1])].equals(" ")) {
                 System.out.println("An dieser Stelle befindet sich keine Figur!");
+                continue;
+            }
+
+            for (int fff = 0; fff < Spielfiguren.length; fff++) {
+                if (Spielfiguren[fff].getID().equals(eingabeUrsprünglichePosition)) {
+                    isInSpielfiguren = true;
+                }
+            }
+            if (!isInSpielfiguren) {
+                System.out.println("Das ist keine Position auf dem Schachbrett!");
                 continue;
             }
 
