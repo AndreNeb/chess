@@ -1,11 +1,3 @@
-// Im Code verwendete Besonderheiten: OOP, Mehrdimensionale Arrays, Schleifen & Verzweigungen, switch-case
-// TODO Beschränkung wo die Figuren hinfahren
-// TODO Timer / Schachuhr
-// TODO Schachbrett soll sich so drehen, wer gerade dran ist; also wenn grün dran ist ist grün unten
-
-
-// Bisheriger Projektaufwand: 15 h
-
 import java.util.Scanner;
 
 public class Main {
@@ -141,6 +133,7 @@ public class Main {
 
         while (true) {
             boolean isInSpielfiguren = false;
+            int überprüfungsvariable = 0;
 
             Scanner sc = new Scanner(System.in);
             System.out.println();
