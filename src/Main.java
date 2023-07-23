@@ -1,5 +1,6 @@
 import java.util.Scanner;
-
+// TODO Schachbrett soll sich umdrehen, je nachdem wer dran ist
+// TODO: move-Beschränkungen implementieren
 public class Main {
     public static void main(String[] args) {
 
@@ -228,7 +229,7 @@ public class Main {
 
                                     System.out.println(Spielfiguren[i].getName() + " " + Spielfiguren[i].getFarbe() + " hat " + Spielfiguren[x].getName() + " " + Spielfiguren[x].getFarbe() + " an der Stelle " + Spielfiguren[x].getID() + " geschlagen!");
                                     System.out.println();
-                                    Spielfiguren[x].setID("GESCHLAGENE FIGUR"); // ID auf irgendwas setzen, sonst findet man wenn man das Array durchgeht womöglich die geschlagene Figur zuerst und dann erscheint demnach das Symbol der geschlagenen Figur wieder
+                                    Spielfiguren[x].setID("GESCHLAGENE FIGUR");
 
 
                                     String codeDerUrsprünglichenPosition = converter(eingabeUrsprünglichePosition);
