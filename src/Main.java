@@ -1,7 +1,9 @@
 import java.util.Scanner;
+
 // TODO Schachbrett soll sich umdrehen, je nachdem wer dran ist
-// TODO move-Beschränkungen implementieren
-// TODO Zu einem ausführbaren file machen
+// TODO Ale Spielzüge in einem .txt File mitprotokollieren
+
+// Arbeitsaufwand bis jetzt: ca. 17 h
 public class Main {
     public static void main(String[] args) {
 
@@ -134,8 +136,8 @@ public class Main {
 
 
         while (true) {
+
             boolean isInSpielfiguren = false;
-            int überprüfungsvariable = 0;
 
             Scanner sc = new Scanner(System.in);
             System.out.println();
@@ -198,59 +200,70 @@ public class Main {
             if (Schachbrett[Integer.parseInt(vergleichsObjektArray[0])][Integer.parseInt(vergleichsObjektArray[1])].equals(" ")) {
                 for (int i = 0; i < Spielfiguren.length; i++) {
                     if (Spielfiguren[i].getID().equals(eingabeUrsprünglichePosition)) {
-                        Spielfiguren[i].setID(eingabeZielPosition);
-
-                        String codeDerUrsprünglichenPosition = converter(eingabeUrsprünglichePosition);
-                        String[] array = codeDerUrsprünglichenPosition.split(" ");
-                        int iIndex = Integer.parseInt(array[0]);
-                        int jIndex = Integer.parseInt(array[1]);
-                        Schachbrett[iIndex][jIndex] = " ";
 
 
-                        String codeDerZielPosition = converter(eingabeZielPosition);
-                        String[] array2 = codeDerZielPosition.split(" ");
-                        int iIndex2 = Integer.parseInt(array2[0]);
-                        int jIndex2 = Integer.parseInt(array2[1]);
-                        Schachbrett[iIndex2][jIndex2] = Spielfiguren[i].getSymbol();
+                        if (tryIfMoveIsPossibleWhenGoalIsEmpty(Spielfiguren[i], eingabeUrsprünglichePosition, eingabeZielPosition)) { // TODO
 
+
+                            Spielfiguren[i].setID(eingabeZielPosition);
+
+                            String codeDerUrsprünglichenPosition = converter(eingabeUrsprünglichePosition);
+                            String[] array = codeDerUrsprünglichenPosition.split(" ");
+                            int iIndex = Integer.parseInt(array[0]);
+                            int jIndex = Integer.parseInt(array[1]);
+                            Schachbrett[iIndex][jIndex] = " ";
+
+
+                            String codeDerZielPosition = converter(eingabeZielPosition);
+                            String[] array2 = codeDerZielPosition.split(" ");
+                            int iIndex2 = Integer.parseInt(array2[0]);
+                            int jIndex2 = Integer.parseInt(array2[1]);
+                            Schachbrett[iIndex2][jIndex2] = Spielfiguren[i].getSymbol();
+                        } else {
+                            vorübergehenderFarbenCounter--;
+                        }
                     }
                 }
+
+
             } else {
                 for (int i = 0; i < Spielfiguren.length; i++) {
                     if (Spielfiguren[i].getID().equals(eingabeUrsprünglichePosition)) {
-
                         for (int x = 0; x < Spielfiguren.length; x++) {
                             if (Spielfiguren[x].getID().equals(eingabeZielPosition)) {
-
                                 if (Spielfiguren[i].getFarbe().equals(Spielfiguren[x].getFarbe())) {
                                     System.out.println("Sie können keine eigene Figur schlagen!");
                                     System.out.println();
                                     break;
                                 } else {
+                                    if (tryIfMoveIsPossibleWheGoalIsNotEmpty(Spielfiguren[i], eingabeUrsprünglichePosition, eingabeZielPosition)) {
 
-                                    System.out.println(Spielfiguren[i].getName() + " " + Spielfiguren[i].getFarbe() + " hat " + Spielfiguren[x].getName() + " " + Spielfiguren[x].getFarbe() + " an der Stelle " + Spielfiguren[x].getID() + " geschlagen!");
-                                    System.out.println();
-                                    Spielfiguren[x].setID("GESCHLAGENE FIGUR");
-
-
-                                    String codeDerUrsprünglichenPosition = converter(eingabeUrsprünglichePosition);
-                                    String[] array = codeDerUrsprünglichenPosition.split(" ");
-                                    int iIndex = Integer.parseInt(array[0]);
-                                    int jIndex = Integer.parseInt(array[1]);
-                                    Schachbrett[iIndex][jIndex] = " ";
-                                    String codeDerZielPosition = converter(eingabeZielPosition);
-                                    String[] array2 = codeDerZielPosition.split(" ");
-                                    int iIndex2 = Integer.parseInt(array2[0]);
-                                    int jIndex2 = Integer.parseInt(array2[1]);
-                                    Schachbrett[iIndex2][jIndex2] = Spielfiguren[i].getSymbol();
+                                        System.out.println(Spielfiguren[i].getName() + " " + Spielfiguren[i].getFarbe() + " hat " + Spielfiguren[x].getName() + " " + Spielfiguren[x].getFarbe() + " an der Stelle " + Spielfiguren[x].getID() + " geschlagen!");
+                                        System.out.println();
+                                        Spielfiguren[x].setID("GESCHLAGENE FIGUR");
 
 
-                                    Spielfiguren[i].setID(eingabeZielPosition);
+                                        String codeDerUrsprünglichenPosition = converter(eingabeUrsprünglichePosition);
+                                        String[] array = codeDerUrsprünglichenPosition.split(" ");
+                                        int iIndex = Integer.parseInt(array[0]);
+                                        int jIndex = Integer.parseInt(array[1]);
+                                        Schachbrett[iIndex][jIndex] = " ";
+                                        String codeDerZielPosition = converter(eingabeZielPosition);
+                                        String[] array2 = codeDerZielPosition.split(" ");
+                                        int iIndex2 = Integer.parseInt(array2[0]);
+                                        int jIndex2 = Integer.parseInt(array2[1]);
+                                        Schachbrett[iIndex2][jIndex2] = Spielfiguren[i].getSymbol();
 
+
+                                        Spielfiguren[i].setID(eingabeZielPosition);
+
+                                    } else {
+                                        vorübergehenderFarbenCounter--;
+                                    }
                                 }
                             }
-                        }
 
+                        }
 
                     }
 
@@ -259,6 +272,167 @@ public class Main {
             }
             Ausgabe(Schachbrett);
         }
+
+    }
+
+
+    public static boolean tryIfMoveIsPossibleWheGoalIsNotEmpty(Spielfigur spielfigur, String eingabeUrsprünglichePosition, String eingabeZielPosition) {
+        if (spielfigur.getName().equals("Bauer") && spielfigur.getFarbe().equals("Weiß")) {
+            char[] buchstabenArray = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
+
+            char spalteDerUrsprünglichenPosition = eingabeUrsprünglichePosition.charAt(0);
+            char spalteDerZielPosition = eingabeZielPosition.charAt(0);
+
+            int zeileDerUrsprünglichenPosition = eingabeUrsprünglichePosition.charAt(1);
+            int zeileDerZielPosition = eingabeZielPosition.charAt(1);
+
+
+            if (spalteDerUrsprünglichenPosition + 1 == spalteDerZielPosition && zeileDerUrsprünglichenPosition + 1 == zeileDerZielPosition) {
+                return true;
+            }
+
+            if (spalteDerUrsprünglichenPosition - 1 == spalteDerZielPosition && zeileDerUrsprünglichenPosition + 1 == zeileDerZielPosition) {
+                return true;
+            }
+
+        }
+
+
+        if (spielfigur.getName().equals("Bauer") && spielfigur.getFarbe().equals("Grün")) {
+            char[] buchstabenArray = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
+
+            char spalteDerUrsprünglichenPosition = eingabeUrsprünglichePosition.charAt(0);
+            char spalteDerZielPosition = eingabeZielPosition.charAt(0);
+
+            int zeileDerUrsprünglichenPosition = eingabeUrsprünglichePosition.charAt(1);
+            int zeileDerZielPosition = eingabeZielPosition.charAt(1);
+
+
+            if (spalteDerUrsprünglichenPosition + 1 == spalteDerZielPosition && zeileDerUrsprünglichenPosition - 1 == zeileDerZielPosition) {
+                return true;
+            }
+
+            if (spalteDerUrsprünglichenPosition - 1 == spalteDerZielPosition && zeileDerUrsprünglichenPosition - 1 == zeileDerZielPosition) {
+                return true;
+            }
+
+        }
+
+        System.out.println("Bauer " + spielfigur.getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+        return false;
+    }
+
+
+    public static boolean tryIfMoveIsPossibleWhenGoalIsEmpty(Spielfigur spielfigur, String eingabeUrsprünglichePosition, String eingabeZielPosition) {
+        if (spielfigur.getName().equals("Bauer") && spielfigur.getFarbe().equals("Weiß")) {
+            int g = Character.getNumericValue(eingabeZielPosition.charAt(1));
+            int h = Character.getNumericValue(eingabeUrsprünglichePosition.charAt(1)) + 1;
+
+            if (eingabeUrsprünglichePosition.charAt(0) != eingabeZielPosition.charAt(0) || h != g) {
+                System.out.println("Bauer Weiß an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                return false;
+            }
+
+        }
+
+
+        if (spielfigur.getName().equals("Bauer") && spielfigur.getFarbe().equals("Grün")) {
+            int g = Character.getNumericValue(eingabeZielPosition.charAt(1));
+            int h = Character.getNumericValue(eingabeUrsprünglichePosition.charAt(1)) - 1;
+
+            if (eingabeUrsprünglichePosition.charAt(0) != eingabeZielPosition.charAt(0) || h != g) {
+                System.out.println("Bauer Grün an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                return false;
+            }
+
+        }
+
+
+        if (spielfigur.getName().equals("Turm")) { // Für Turm Farbenunabhängig, da ja in jeder Spalte / Zeile nach oben oder nach unten
+
+            String spalteZiel = Integer.toString(eingabeZielPosition.charAt(0));
+            int zeileZiel = eingabeZielPosition.charAt(1);
+
+            String spalteUrsprung = Integer.toString(eingabeUrsprünglichePosition.charAt(0));
+            int zeileUrsprung = eingabeUrsprünglichePosition.charAt(1);
+
+
+            if (!spalteZiel.equals(spalteUrsprung) && zeileZiel != zeileUrsprung) {
+                System.out.println("Turm " + spielfigur.getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                return false;
+            }
+
+        }
+
+        if (spielfigur.getName().equals("Springer")) { // Auch hier keine weitere implementierung für Grün erforderlich
+            int spalteZiel = eingabeZielPosition.charAt(0) - 'A';
+            int zeileZiel = eingabeZielPosition.charAt(1) - '1';
+            int spalteUrsprung = eingabeUrsprünglichePosition.charAt(0) - 'A';
+            int zeileUrsprung = eingabeUrsprünglichePosition.charAt(1) - '1';
+            int deltaX = Math.abs(spalteZiel - spalteUrsprung);
+            int deltaY = Math.abs(zeileZiel - zeileUrsprung);
+            if ((deltaX == 1 && deltaY == 2) || (deltaX == 2 && deltaY == 1)) return true;
+            else {
+                System.out.println("Springer " + spielfigur.getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                return false;
+            }
+
+        }
+
+        if (spielfigur.getName().equals("Läufer")) { // Auch hier keine weitere implementierung für Grün erforderlich
+            int spalteZiel = eingabeZielPosition.charAt(0) - 'A';
+            int zeileZiel = eingabeZielPosition.charAt(1) - '1';
+            int spalteUrsprung = eingabeUrsprünglichePosition.charAt(0) - 'A';
+            int zeileUrsprung = eingabeUrsprünglichePosition.charAt(1) - '1';
+
+            int deltaX = Math.abs(spalteZiel - spalteUrsprung);
+            int deltaY = Math.abs(zeileZiel - zeileUrsprung);
+
+            if (deltaX == deltaY) {
+                return true;
+            } else {
+                System.out.println("Läufer " + spielfigur.getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                return false;
+            }
+        }
+
+
+        if (spielfigur.getName().equals("King")) { // Auch hier keine weitere implementierung für Grün erforderlich
+            int spalteZiel = eingabeZielPosition.charAt(0) - 'A';
+            int zeileZiel = eingabeZielPosition.charAt(1) - '1';
+            int spalteUrsprung = eingabeUrsprünglichePosition.charAt(0) - 'A';
+            int zeileUrsprung = eingabeUrsprünglichePosition.charAt(1) - '1';
+            int deltaX = Math.abs(spalteZiel - spalteUrsprung);
+            int deltaY = Math.abs(zeileZiel - zeileUrsprung);
+
+            // Überprüfen, ob der Zug horizontal, vertikal oder diagonal ist und nur um eine Position geht
+            if (deltaX <= 1 && deltaY <= 1) {
+                return true;
+            } else {
+                System.out.println("King " + spielfigur.getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                return false;
+            }
+        }
+
+        if (spielfigur.getName().equals("Queen")) { // Auch hier keine weitere implementierung für Grün erforderlich
+            int spalteZiel = eingabeZielPosition.charAt(0) - 'A';
+            int zeileZiel = eingabeZielPosition.charAt(1) - '1';
+            int spalteUrsprung = eingabeUrsprünglichePosition.charAt(0) - 'A';
+            int zeileUrsprung = eingabeUrsprünglichePosition.charAt(1) - '1';
+            int deltaX = Math.abs(spalteZiel - spalteUrsprung);
+            int deltaY = Math.abs(zeileZiel - zeileUrsprung);
+
+            // Überprüfen, ob der Zug horizontal, vertikal oder diagonal ist und ob deltaX und deltaY gleich sind, was auf eine diagonale Bewegung hinweist
+            if (deltaX == 0 || deltaY == 0 || deltaX == deltaY) {
+                return true;
+            } else {
+                System.out.println("Queen " + spielfigur.getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                return false;
+            }
+        }
+
+
+        return true;
     }
 
 
