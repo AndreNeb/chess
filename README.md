@@ -1,24 +1,28 @@
-# Schachspiel in Java
+# Schachbrett-Spiel - README
 
-Dieses Projekt ist eine einfache Java-Implementierung eines Schachspiels in der Kommandozeile. Es ermöglicht zwei Spielerinnen oder Spielern, Schachzüge zu machen und die Schachfiguren auf einem 8x8-Schachbrett zu bewegen.
+Dieses README-Dokument beschreibt den Java-Code für ein einfaches Schachbrett-Spiel, das in der Konsole ausgeführt wird. Das Spiel ermöglicht es zwei Spielern, abwechselnd ihre Züge zu machen und Schachfiguren auf dem Schachbrett zu bewegen.
 
 # Spielregeln
 
-- Das Schachspiel wird von zwei Spielern gespielt: Weiß und Grün.
-- Das Spielfeld besteht aus einem 8x8-Schachbrett.
-- Die Figuren werden mit den Buchstaben "B" für Bauer, "T" für Turm, "S" für Springer, "L" für Läufer, "Q" für Queen und "K" für King dargestellt. Die Farbe der Figuren wird durch "Weiß" oder "Grün" angezeigt.
-- Jede Seite beginnt mit 8 Bauern, 2 Türmen, 2 Springern, 2 Läufern, einer Königin und einem König.
-- Der Spieler mit den weißen Figuren beginnt das Spiel.
-- Die Spieler geben ihre Züge durch Eingabe der aktuellen und der gewünschten Position der Spielfiguren an. Beispielsweise "A2 A4" würde den Bauern auf Position A2 auf A4 bewegen.
+- Das Schachbrett besteht aus 8x8 Feldern mit 8 vertikalen Spalten (a-h) und 8 horizontalen Reihen (1-8).
+- Zu Beginn des Spiels werden die Schachfiguren entsprechend ihrer Startpositionen auf dem Schachbrett platziert.
+- Weiß beginnt das Spiel, und die Spieler machen abwechselnd ihre Züge.
+- Die Schachfiguren können je nach Typ unterschiedliche Zugmöglichkeiten haben: Bauer, Turm, Springer, Läufer, Dame (Queen) und König.
+- Das Ziel des Spiels ist es, den König des Gegners schachmatt zu setzen, was bedeutet, dass der König im nächsten Zug geschlagen werden kann und keine legalen Züge mehr übrig hat.
 
-# Verwendung
+# Code-Aufbau
 
-Um das Schachspiel zu starten, führe die `main`-Methode in der Klasse `Main` aus. Die Spielanweisungen und Züge werden in der Kommandozeile angezeigt.
+Der Code basiert auf einer einfachen Konsolenanwendung. Die wichtigsten Klassen im Code sind:
 
-# Hinweise
+- **Main**: Die Hauptklasse des Spiels, die die Initialisierung der Spielfiguren, das Schachbrett und die Eingabe der Spielerzüge steuert.
+- **Spielfigur**: Eine Klasse, die eine Schachfigur repräsentiert und ihre Eigenschaften wie Farbe, Typ, ID und Symbol verwaltet.
+- **Ausgabe**: Eine Hilfsklasse zum Anzeigen des Schachbretts und der Schachfiguren auf der Konsole.
+- **moveFigures**: Eine Methode, die die Spiellogik steuert und prüft, ob die Züge der Spieler gültig sind und das Schachbrett entsprechend aktualisiert.
 
-- Die Eingabe der Positionen erfolgt als alphanumerische Zeichenkombination. Beispielsweise "A1", "B2", "H8", usw.
-- Das Spiel kann jederzeit durch die Eingabe von "c" beendet werden.
-- Das Spiel kontrolliert keine Eingaben der Benutzer - es simuliert ein einfaches Schachbrett
+# Spielzüge speichern
 
-Viel Spaß beim Spielen!
+Das Spiel speichert die getätigten Züge in einer Datei namens "schachspielzuege.txt". Jeder Zug wird in einer neuen Zeile gespeichert. Wenn das Spiel beendet wird oder ein Spieler den Befehl "c" eingibt, wird der Inhalt der Datei gelöscht.
+
+# Hinweis
+
+Dies ist ein einfaches Konsolenspiel, das auf der Logik von Schach basiert. Es gibt keine Implementierung für spezielle Schachregeln wie Rochade, en passant, Schach oder Schachmatt. Das Spiel ist nur als Demonstration der Grundlagen von Schach und der Programmierung in Java gedacht. Es kann als Grundlage für ein umfangreicheres Schachspiel weiterentwickelt werden.
