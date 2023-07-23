@@ -1,9 +1,9 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
-// TODO Schachbrett soll sich umdrehen, je nachdem wer dran ist
-// TODO Ale Spielzüge in einem .txt File mitprotokollieren
-
-// Arbeitsaufwand bis jetzt: ca. 17 h
 public class Main {
     public static void main(String[] args) {
 
@@ -145,6 +145,7 @@ public class Main {
             String eingabeUrsprünglichePosition = sc.next();
             if (eingabeUrsprünglichePosition.equals("c")) {
                 System.out.println("Die Partie ist beendet!");
+                spielzügeDateiLöschen();
                 break;
             }
             String convertedEingabeUrsprünglichePosition = converter(eingabeUrsprünglichePosition);
@@ -196,6 +197,7 @@ public class Main {
             String vergleichsObjekt = converter(eingabeZielPosition);
             String[] vergleichsObjektArray = vergleichsObjekt.split(" ");
 
+            speichereSpielzügeInDatei(eingabeUrsprünglichePosition, eingabeZielPosition);
 
             if (Schachbrett[Integer.parseInt(vergleichsObjektArray[0])][Integer.parseInt(vergleichsObjektArray[1])].equals(" ")) {
                 for (int i = 0; i < Spielfiguren.length; i++) {
@@ -435,6 +437,34 @@ public class Main {
         return true;
     }
 
+    public static void speichereSpielzügeInDatei(String ursprung, String ziel) {
+        try {
+            File datei = new File("schachspielzuege.txt");
+            FileWriter writer = new FileWriter(datei, true);
+
+
+            String zug = ursprung + " -> " + ziel;
+            writer.write(zug + "\n");
+
+
+            writer.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void spielzügeDateiLöschen() {
+        try {
+            File datei = new File("schachspielzuege.txt");
+            PrintWriter writer = new PrintWriter(datei);
+            writer.close();
+            System.out.println("Inhalt der Spielzugdatei wurde gelöscht.");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static String converter(String eingabe) {
         switch (eingabe) {
