@@ -1,6 +1,7 @@
 import java.util.Scanner;
 // TODO Schachbrett soll sich umdrehen, je nachdem wer dran ist
-// TODO: move-Beschränkungen implementieren
+// TODO move-Beschränkungen implementieren
+// TODO Zu einem ausführbaren file machen
 public class Main {
     public static void main(String[] args) {
 
