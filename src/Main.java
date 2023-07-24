@@ -1,4 +1,5 @@
 // TODO: Schachbrett soll sich je nachdem wer dran ist umdrehen
+// TODO: Schachuhr in Ausgabe() einfügen
 
 import java.io.File;
 import java.io.FileWriter;
