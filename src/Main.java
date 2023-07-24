@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        // Init Schachfiguren
+        // Init Chess Figures
 
         Spielfigur bauerA2 = new Spielfigur(6, 0, "Weiß", "♟", "A2", "Bauer");
         Spielfigur bauerB2 = new Spielfigur(6, 1, "Weiß", "♟", "B2", "Bauer");
