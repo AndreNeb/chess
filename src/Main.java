@@ -9,42 +9,42 @@ public class Main {
 
         // Init Schachfiguren
 
-        Spielfigur bauerA2 = new Spielfigur(6, 0, "Weiß", "B", "A2", "Bauer");
-        Spielfigur bauerB2 = new Spielfigur(6, 1, "Weiß", "B", "B2", "Bauer");
-        Spielfigur bauerC2 = new Spielfigur(6, 2, "Weiß", "B", "C2", "Bauer");
-        Spielfigur bauerD2 = new Spielfigur(6, 3, "Weiß", "B", "D2", "Bauer");
-        Spielfigur bauerE2 = new Spielfigur(6, 4, "Weiß", "B", "E2", "Bauer");
-        Spielfigur bauerF2 = new Spielfigur(6, 5, "Weiß", "B", "F2", "Bauer");
-        Spielfigur bauerG2 = new Spielfigur(6, 6, "Weiß", "B", "G2", "Bauer");
-        Spielfigur bauerH2 = new Spielfigur(6, 7, "Weiß", "B", "H2", "Bauer");
+        Spielfigur bauerA2 = new Spielfigur(6, 0, "Weiß", "♟", "A2", "Bauer");
+        Spielfigur bauerB2 = new Spielfigur(6, 1, "Weiß", "♟", "B2", "Bauer");
+        Spielfigur bauerC2 = new Spielfigur(6, 2, "Weiß", "♟", "C2", "Bauer");
+        Spielfigur bauerD2 = new Spielfigur(6, 3, "Weiß", "♟", "D2", "Bauer");
+        Spielfigur bauerE2 = new Spielfigur(6, 4, "Weiß", "♟", "E2", "Bauer");
+        Spielfigur bauerF2 = new Spielfigur(6, 5, "Weiß", "♟", "F2", "Bauer");
+        Spielfigur bauerG2 = new Spielfigur(6, 6, "Weiß", "♟", "G2", "Bauer");
+        Spielfigur bauerH2 = new Spielfigur(6, 7, "Weiß", "♟", "H2", "Bauer");
 
-        Spielfigur turmA1 = new Spielfigur(7, 0, "Weiß", "T", "A1", "Turm");
-        Spielfigur turmH1 = new Spielfigur(7, 7, "Weiß", "T", "H1", "Turm");
-        Spielfigur springerB1 = new Spielfigur(7, 1, "Weiß", "S", "B1", "Springer");
-        Spielfigur springerG1 = new Spielfigur(7, 6, "Weiß", "S", "G1", "Springer");
-        Spielfigur läuferC1 = new Spielfigur(7, 2, "Weiß", "L", "C1", "Läufer");
-        Spielfigur läuferF1 = new Spielfigur(7, 5, "Weiß", "L", "F1", "Läufer");
-        Spielfigur queenD1 = new Spielfigur(7, 3, "Weiß", "Q", "D1", "Queen");
-        Spielfigur kingE1 = new Spielfigur(7, 4, "Weiß", "K", "E1", "King");
+        Spielfigur turmA1 = new Spielfigur(7, 0, "Weiß", "♜", "A1", "Turm");
+        Spielfigur turmH1 = new Spielfigur(7, 7, "Weiß", "♜", "H1", "Turm");
+        Spielfigur springerB1 = new Spielfigur(7, 1, "Weiß", "♞", "B1", "Springer");
+        Spielfigur springerG1 = new Spielfigur(7, 6, "Weiß", "♞", "G1", "Springer");
+        Spielfigur läuferC1 = new Spielfigur(7, 2, "Weiß", "♝", "C1", "Läufer");
+        Spielfigur läuferF1 = new Spielfigur(7, 5, "Weiß", "♝", "F1", "Läufer");
+        Spielfigur queenD1 = new Spielfigur(7, 3, "Weiß", "♛", "D1", "Queen");
+        Spielfigur kingE1 = new Spielfigur(7, 4, "Weiß", "♚", "E1", "King");
 
 
-        Spielfigur bauerA7 = new Spielfigur(1, 0, "Grün", "\u001B[32mB\u001B[0m", "A7", "Bauer");
-        Spielfigur bauerB7 = new Spielfigur(1, 1, "Grün", "\u001B[32mB\u001B[0m", "B7", "Bauer");
-        Spielfigur bauerC7 = new Spielfigur(1, 2, "Grün", "\u001B[32mB\u001B[0m", "C7", "Bauer");
-        Spielfigur bauerD7 = new Spielfigur(1, 3, "Grün", "\u001B[32mB\u001B[0m", "D7", "Bauer");
-        Spielfigur bauerE7 = new Spielfigur(1, 4, "Grün", "\u001B[32mB\u001B[0m", "E7", "Bauer");
-        Spielfigur bauerF7 = new Spielfigur(1, 5, "Grün", "\u001B[32mB\u001B[0m", "F7", "Bauer");
-        Spielfigur bauerG7 = new Spielfigur(1, 6, "Grün", "\u001B[32mB\u001B[0m", "G7", "Bauer");
-        Spielfigur bauerH7 = new Spielfigur(1, 7, "Grün", "\u001B[32mB\u001B[0m", "H7", "Bauer");
+        Spielfigur bauerA7 = new Spielfigur(1, 0, "Grün", "\u001B[32m♟\u001B[0m", "A7", "Bauer");
+        Spielfigur bauerB7 = new Spielfigur(1, 1, "Grün", "\u001B[32m♟\u001B[0m", "B7", "Bauer");
+        Spielfigur bauerC7 = new Spielfigur(1, 2, "Grün", "\u001B[32m♟\u001B[0m", "C7", "Bauer");
+        Spielfigur bauerD7 = new Spielfigur(1, 3, "Grün", "\u001B[32m♟\u001B[0m", "D7", "Bauer");
+        Spielfigur bauerE7 = new Spielfigur(1, 4, "Grün", "\u001B[32m♟\u001B[0m", "E7", "Bauer");
+        Spielfigur bauerF7 = new Spielfigur(1, 5, "Grün", "\u001B[32m♟\u001B[0m", "F7", "Bauer");
+        Spielfigur bauerG7 = new Spielfigur(1, 6, "Grün", "\u001B[32m♟\u001B[0m", "G7", "Bauer");
+        Spielfigur bauerH7 = new Spielfigur(1, 7, "Grün", "\u001B[32m♟\u001B[0m", "H7", "Bauer");
 
-        Spielfigur turmA8 = new Spielfigur(0, 0, "Grün", "\u001B[32mT\u001B[0m", "A8", "Turm");
-        Spielfigur turmH8 = new Spielfigur(0, 7, "Grün", "\u001B[32mT\u001B[0m", "H8", "Turm");
-        Spielfigur springerB8 = new Spielfigur(0, 1, "Grün", "\u001B[32mS\u001B[0m", "B8", "Springer");
-        Spielfigur springerG8 = new Spielfigur(0, 6, "Grün", "\u001B[32mS\u001B[0m", "G8", "Springer");
-        Spielfigur läuferC8 = new Spielfigur(0, 2, "Grün", "\u001B[32mL\u001B[0m", "C8", "Läufer");
-        Spielfigur läuferF8 = new Spielfigur(0, 5, "Grün", "\u001B[32mL\u001B[0m", "F8", "Läufer");
-        Spielfigur queenD8 = new Spielfigur(0, 3, "Grün", "\u001B[32mQ\u001B[0m", "D8", "Queen");
-        Spielfigur kingE8 = new Spielfigur(0, 4, "Grün", "\u001B[32mK\u001B[0m", "E8", "King");
+        Spielfigur turmA8 = new Spielfigur(0, 0, "Grün", "\u001B[32m♜\u001B[0m", "A8", "Turm");
+        Spielfigur turmH8 = new Spielfigur(0, 7, "Grün", "\u001B[32m♜\u001B[0m", "H8", "Turm");
+        Spielfigur springerB8 = new Spielfigur(0, 1, "Grün", "\u001B[32m♞\u001B[0m", "B8", "Springer");
+        Spielfigur springerG8 = new Spielfigur(0, 6, "Grün", "\u001B[32m♞\u001B[0m", "G8", "Springer");
+        Spielfigur läuferC8 = new Spielfigur(0, 2, "Grün", "\u001B[32m♝\u001B[0m", "C8", "Läufer");
+        Spielfigur läuferF8 = new Spielfigur(0, 5, "Grün", "\u001B[32m♝\u001B[0m", "F8", "Läufer");
+        Spielfigur queenD8 = new Spielfigur(0, 3, "Grün", "\u001B[32m♛\u001B[0m", "D8", "Queen");
+        Spielfigur kingE8 = new Spielfigur(0, 4, "Grün", "\u001B[32m♚\u001B[0m", "E8", "King");
 
 
         Spielfigur[] Spielfiguren = {bauerA2, bauerB2, bauerC2, bauerD2, bauerE2, bauerF2, bauerG2, bauerH2, turmA1, turmH1, springerB1, springerG1, läuferC1, läuferF1, queenD1, kingE1, bauerA7, bauerB7, bauerC7, bauerD7, bauerE7, bauerF7, bauerG7, bauerH7, turmA8, turmH8, springerB8, springerG8, läuferC8, läuferF8, queenD8, kingE8};
