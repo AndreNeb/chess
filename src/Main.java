@@ -145,7 +145,14 @@ public class Main {
             String eingabeUrsprünglichePosition = sc.next();
             if (eingabeUrsprünglichePosition.equals("c")) {
                 System.out.println("Die Partie ist beendet!");
-                spielzügeDateiLöschen();
+                System.out.println("Sollen die Spielzüge in der Datei gespeichert bleiben? (Y = 0/N = 1) ");
+                int speichereSpielzüge = sc.nextInt();
+                if (speichereSpielzüge == 0)
+                    System.out.println("Die Spielzüge wurden gespeichert und können im File angesehen werden!");
+                else {
+                    spielzügeDateiLöschen();
+                }
+
                 break;
             }
             String convertedEingabeUrsprünglichePosition = converter(eingabeUrsprünglichePosition);
