@@ -210,7 +210,7 @@ public class Main {
                     if (Spielfiguren[i].getID().equals(eingabeUrsprünglichePosition)) {
 
                         if (tryIfMoveIsPossibleWhenGoalIsEmpty(Spielfiguren[i], eingabeUrsprünglichePosition,
-                                eingabeZielPosition)) { // TODO
+                                eingabeZielPosition)) {
 
                             Spielfiguren[i].setID(eingabeZielPosition);
 
