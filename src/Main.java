@@ -1,5 +1,9 @@
-// TODO: Schachbrett soll sich je nachdem wer dran ist umdrehen
 // TODO: Schachuhr in Ausgabe() einfügen
+// TODO: Spielfigurenkontrolle hinzufügen
+// TODO: Spezielle Spielzüge beachten (En passant, Bauernumwandlung & Rochade)
+// TODO: Check if Chess
+// TODO: Check if Checkmate
+
 
 import java.io.File;
 import java.io.FileWriter;
@@ -48,10 +52,7 @@ public class Main {
         Spielfigur queenD8 = new Spielfigur(0, 3, "Grün", "\u001B[32m♛\u001B[0m", "D8", "Queen");
         Spielfigur kingE8 = new Spielfigur(0, 4, "Grün", "\u001B[32m♚\u001B[0m", "E8", "King");
 
-        Spielfigur[] Spielfiguren = { bauerA2, bauerB2, bauerC2, bauerD2, bauerE2, bauerF2, bauerG2, bauerH2, turmA1,
-                turmH1, springerB1, springerG1, läuferC1, läuferF1, queenD1, kingE1, bauerA7, bauerB7, bauerC7, bauerD7,
-                bauerE7, bauerF7, bauerG7, bauerH7, turmA8, turmH8, springerB8, springerG8, läuferC8, läuferF8, queenD8,
-                kingE8 };
+        Spielfigur[] Spielfiguren = {bauerA2, bauerB2, bauerC2, bauerD2, bauerE2, bauerF2, bauerG2, bauerH2, turmA1, turmH1, springerB1, springerG1, läuferC1, läuferF1, queenD1, kingE1, bauerA7, bauerB7, bauerC7, bauerD7, bauerE7, bauerF7, bauerG7, bauerH7, turmA8, turmH8, springerB8, springerG8, läuferC8, läuferF8, queenD8, kingE8};
         String[][] Schachbrett = new String[9][9];
 
         // Felder der grünen Seite mit Figuren befüllen
@@ -100,7 +101,7 @@ public class Main {
 
     public static void Ausgabe(String[][] Schachbrett) {
 
-        char[] buchstaben = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
+        char[] buchstaben = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
 
         // Buchstaben ausgeben
         for (int i = 0; i < buchstaben.length; i++) {
@@ -144,7 +145,7 @@ public class Main {
             String eingabeUrsprünglichePosition = sc.next();
             if (eingabeUrsprünglichePosition.equals("c")) {
                 System.out.println("Die Partie ist beendet!");
-                System.out.println("Sollen die Spielzüge in der Datei gespeichert bleiben? (Y = 0/N = 1) ");
+                System.out.println("Sollen die Spielzüge in der Datei gespeichert bleiben? (Y = 0 / N = 1) ");
                 int speichereSpielzüge = sc.nextInt();
                 if (speichereSpielzüge == 0)
                     System.out.println("Die Spielzüge wurden gespeichert und können im File angesehen werden!");
@@ -156,8 +157,7 @@ public class Main {
             }
             String convertedEingabeUrsprünglichePosition = converter(eingabeUrsprünglichePosition);
             String[] convertedEingabeUrsprünglichePositionArray = convertedEingabeUrsprünglichePosition.split(" ");
-            if (Schachbrett[Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0])][Integer
-                    .parseInt(convertedEingabeUrsprünglichePositionArray[1])].equals(" ")) {
+            if (Schachbrett[Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0])][Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1])].equals(" ")) {
                 System.out.println("An dieser Stelle befindet sich keine Figur!");
                 continue;
             }
@@ -205,13 +205,11 @@ public class Main {
 
             speichereSpielzügeInDatei(eingabeUrsprünglichePosition, eingabeZielPosition);
 
-            if (Schachbrett[Integer.parseInt(vergleichsObjektArray[0])][Integer.parseInt(vergleichsObjektArray[1])]
-                    .equals(" ")) {
+            if (Schachbrett[Integer.parseInt(vergleichsObjektArray[0])][Integer.parseInt(vergleichsObjektArray[1])].equals(" ")) {
                 for (int i = 0; i < Spielfiguren.length; i++) {
                     if (Spielfiguren[i].getID().equals(eingabeUrsprünglichePosition)) {
 
-                        if (tryIfMoveIsPossibleWhenGoalIsEmpty(Spielfiguren[i], eingabeUrsprünglichePosition,
-                                eingabeZielPosition)) {
+                        if (tryIfMoveIsPossibleWhenGoalIsEmpty(Spielfiguren[i], eingabeUrsprünglichePosition, eingabeZielPosition)) {
 
                             Spielfiguren[i].setID(eingabeZielPosition);
 
@@ -242,12 +240,9 @@ public class Main {
                                     System.out.println();
                                     break;
                                 } else {
-                                    if (tryIfMoveIsPossibleWheGoalIsNotEmpty(Spielfiguren[i],
-                                            eingabeUrsprünglichePosition, eingabeZielPosition)) {
+                                    if (tryIfMoveIsPossibleWheGoalIsNotEmpty(Spielfiguren[i], eingabeUrsprünglichePosition, eingabeZielPosition)) {
 
-                                        System.out.println(Spielfiguren[i].getName() + " " + Spielfiguren[i].getFarbe()
-                                                + " hat " + Spielfiguren[x].getName() + " " + Spielfiguren[x].getFarbe()
-                                                + " an der Stelle " + Spielfiguren[x].getID() + " geschlagen!");
+                                        System.out.println(Spielfiguren[i].getName() + " " + Spielfiguren[i].getFarbe() + " hat " + Spielfiguren[x].getName() + " " + Spielfiguren[x].getFarbe() + " an der Stelle " + Spielfiguren[x].getID() + " geschlagen!");
                                         System.out.println();
                                         Spielfiguren[x].setID("GESCHLAGENE FIGUR");
 
@@ -282,10 +277,9 @@ public class Main {
 
     }
 
-    public static boolean tryIfMoveIsPossibleWheGoalIsNotEmpty(Spielfigur spielfigur,
-            String eingabeUrsprünglichePosition, String eingabeZielPosition) {
+    public static boolean tryIfMoveIsPossibleWheGoalIsNotEmpty(Spielfigur spielfigur, String eingabeUrsprünglichePosition, String eingabeZielPosition) {
         if (spielfigur.getName().equals("Bauer") && spielfigur.getFarbe().equals("Weiß")) {
-            char[] buchstabenArray = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
+            char[] buchstabenArray = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
 
             char spalteDerUrsprünglichenPosition = eingabeUrsprünglichePosition.charAt(0);
             char spalteDerZielPosition = eingabeZielPosition.charAt(0);
@@ -293,20 +287,18 @@ public class Main {
             int zeileDerUrsprünglichenPosition = eingabeUrsprünglichePosition.charAt(1);
             int zeileDerZielPosition = eingabeZielPosition.charAt(1);
 
-            if (spalteDerUrsprünglichenPosition + 1 == spalteDerZielPosition
-                    && zeileDerUrsprünglichenPosition + 1 == zeileDerZielPosition) {
+            if (spalteDerUrsprünglichenPosition + 1 == spalteDerZielPosition && zeileDerUrsprünglichenPosition + 1 == zeileDerZielPosition) {
                 return true;
             }
 
-            if (spalteDerUrsprünglichenPosition - 1 == spalteDerZielPosition
-                    && zeileDerUrsprünglichenPosition + 1 == zeileDerZielPosition) {
+            if (spalteDerUrsprünglichenPosition - 1 == spalteDerZielPosition && zeileDerUrsprünglichenPosition + 1 == zeileDerZielPosition) {
                 return true;
             }
 
         }
 
         if (spielfigur.getName().equals("Bauer") && spielfigur.getFarbe().equals("Grün")) {
-            char[] buchstabenArray = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
+            char[] buchstabenArray = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
 
             char spalteDerUrsprünglichenPosition = eingabeUrsprünglichePosition.charAt(0);
             char spalteDerZielPosition = eingabeZielPosition.charAt(0);
@@ -314,32 +306,27 @@ public class Main {
             int zeileDerUrsprünglichenPosition = eingabeUrsprünglichePosition.charAt(1);
             int zeileDerZielPosition = eingabeZielPosition.charAt(1);
 
-            if (spalteDerUrsprünglichenPosition + 1 == spalteDerZielPosition
-                    && zeileDerUrsprünglichenPosition - 1 == zeileDerZielPosition) {
+            if (spalteDerUrsprünglichenPosition + 1 == spalteDerZielPosition && zeileDerUrsprünglichenPosition - 1 == zeileDerZielPosition) {
                 return true;
             }
 
-            if (spalteDerUrsprünglichenPosition - 1 == spalteDerZielPosition
-                    && zeileDerUrsprünglichenPosition - 1 == zeileDerZielPosition) {
+            if (spalteDerUrsprünglichenPosition - 1 == spalteDerZielPosition && zeileDerUrsprünglichenPosition - 1 == zeileDerZielPosition) {
                 return true;
             }
 
         }
 
-        System.out.println("Bauer " + spielfigur.getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition
-                + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+        System.out.println("Bauer " + spielfigur.getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
         return false;
     }
 
-    public static boolean tryIfMoveIsPossibleWhenGoalIsEmpty(Spielfigur spielfigur, String eingabeUrsprünglichePosition,
-            String eingabeZielPosition) {
+    public static boolean tryIfMoveIsPossibleWhenGoalIsEmpty(Spielfigur spielfigur, String eingabeUrsprünglichePosition, String eingabeZielPosition) {
         if (spielfigur.getName().equals("Bauer") && spielfigur.getFarbe().equals("Weiß")) {
             int g = Character.getNumericValue(eingabeZielPosition.charAt(1));
             int h = Character.getNumericValue(eingabeUrsprünglichePosition.charAt(1)) + 1;
 
             if (eingabeUrsprünglichePosition.charAt(0) != eingabeZielPosition.charAt(0) || h != g) {
-                System.out.println("Bauer Weiß an der Stelle " + eingabeUrsprünglichePosition
-                        + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                System.out.println("Bauer Weiß an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
                 return false;
             }
 
@@ -350,15 +337,14 @@ public class Main {
             int h = Character.getNumericValue(eingabeUrsprünglichePosition.charAt(1)) - 1;
 
             if (eingabeUrsprünglichePosition.charAt(0) != eingabeZielPosition.charAt(0) || h != g) {
-                System.out.println("Bauer Grün an der Stelle " + eingabeUrsprünglichePosition
-                        + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                System.out.println("Bauer Grün an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
                 return false;
             }
 
         }
 
         if (spielfigur.getName().equals("Turm")) { // Für Turm Farbenunabhängig, da ja in jeder Spalte / Zeile nach oben
-                                                   // oder nach unten
+            // oder nach unten
 
             String spalteZiel = Integer.toString(eingabeZielPosition.charAt(0));
             int zeileZiel = eingabeZielPosition.charAt(1);
@@ -367,8 +353,7 @@ public class Main {
             int zeileUrsprung = eingabeUrsprünglichePosition.charAt(1);
 
             if (!spalteZiel.equals(spalteUrsprung) && zeileZiel != zeileUrsprung) {
-                System.out.println("Turm " + spielfigur.getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition
-                        + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                System.out.println("Turm " + spielfigur.getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
                 return false;
             }
 
@@ -381,12 +366,9 @@ public class Main {
             int zeileUrsprung = eingabeUrsprünglichePosition.charAt(1) - '1';
             int deltaX = Math.abs(spalteZiel - spalteUrsprung);
             int deltaY = Math.abs(zeileZiel - zeileUrsprung);
-            if ((deltaX == 1 && deltaY == 2) || (deltaX == 2 && deltaY == 1))
-                return true;
+            if ((deltaX == 1 && deltaY == 2) || (deltaX == 2 && deltaY == 1)) return true;
             else {
-                System.out
-                        .println("Springer " + spielfigur.getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition
-                                + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                System.out.println("Springer " + spielfigur.getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
                 return false;
             }
 
@@ -404,8 +386,7 @@ public class Main {
             if (deltaX == deltaY) {
                 return true;
             } else {
-                System.out.println("Läufer " + spielfigur.getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition
-                        + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                System.out.println("Läufer " + spielfigur.getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
                 return false;
             }
         }
@@ -423,8 +404,7 @@ public class Main {
             if (deltaX <= 1 && deltaY <= 1) {
                 return true;
             } else {
-                System.out.println("King " + spielfigur.getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition
-                        + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                System.out.println("King " + spielfigur.getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
                 return false;
             }
         }
@@ -442,8 +422,7 @@ public class Main {
             if (deltaX == 0 || deltaY == 0 || deltaX == deltaY) {
                 return true;
             } else {
-                System.out.println("Queen " + spielfigur.getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition
-                        + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                System.out.println("Queen " + spielfigur.getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
                 return false;
             }
         }
@@ -477,6 +456,7 @@ public class Main {
             e.printStackTrace();
         }
     }
+    
 
     public static String converter(String eingabe) {
         switch (eingabe) {
