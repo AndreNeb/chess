@@ -3,6 +3,8 @@
 // TODO: Spezielle Spielzüge beachten (En passant, Bauernumwandlung & Rochade)
 // TODO: Check if Chess
 // TODO: Check if Checkmate
+// TODO: Bauer soll beim ersten Move zwei nach vorne fahren können (Neues Attribut bei Spielfigur, "Zuganzahl");
+// TODO: Bauern-Bug Fixen
 
 
 import java.io.File;
@@ -10,6 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -158,7 +161,7 @@ public class Main {
             String convertedEingabeUrsprünglichePosition = converter(eingabeUrsprünglichePosition);
             String[] convertedEingabeUrsprünglichePositionArray = convertedEingabeUrsprünglichePosition.split(" ");
             if (Schachbrett[Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0])][Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1])].equals(" ")) {
-                System.out.println("An dieser Stelle befindet sich keine Figur!");
+                System.out.println("An dieser Position befindet sich keine Figur!");
                 continue;
             }
 
@@ -182,10 +185,12 @@ public class Main {
                         vorübergehenderFarbenCounter++;
                     } else {
                         if (Spielfiguren[u].getFarbe().equals("Weiß")) {
+                            System.out.println();
                             System.out.println("Grün ist jetzt am Zug!");
                             colorError = true;
                         }
                         if (Spielfiguren[u].getFarbe().equals("Grün")) {
+                            System.out.println();
                             System.out.println("Weiß ist jetzt am Zug!");
                             colorError = true;
                         }
@@ -199,6 +204,12 @@ public class Main {
 
             System.out.println("Wohin möchtest du sie bewegen?: ");
             String eingabeZielPosition = sc.next();
+
+            if (!checkIfFigurIsInTheWay(Schachbrett, Spielfiguren, eingabeUrsprünglichePosition, eingabeZielPosition)) {
+                vorübergehenderFarbenCounter--;
+                System.out.println("Turm darf sich nicht hierher bewegen!");
+                continue;
+            } // TODO --------------------------------------------------------------------------------------------------
 
             String vergleichsObjekt = converter(eingabeZielPosition);
             String[] vergleichsObjektArray = vergleichsObjekt.split(" ");
@@ -238,6 +249,7 @@ public class Main {
                                 if (Spielfiguren[i].getFarbe().equals(Spielfiguren[x].getFarbe())) {
                                     System.out.println("Sie können keine eigene Figur schlagen!");
                                     System.out.println();
+                                    vorübergehenderFarbenCounter--;
                                     break;
                                 } else {
                                     if (tryIfMoveIsPossibleWheGoalIsNotEmpty(Spielfiguren[i], eingabeUrsprünglichePosition, eingabeZielPosition)) {
@@ -456,7 +468,64 @@ public class Main {
             e.printStackTrace();
         }
     }
-    
+
+    public static boolean checkIfFigurIsInTheWay(String[][] Schachbrett, Spielfigur[] Spielfiguren, String eingabeUrsprünglichePosition, String eingabeZielPosition) {
+        String convertedEingabeUrsprünglichePosition = converter(eingabeUrsprünglichePosition);
+        String[] convertedEingabeUrsprünglichePositionArray = convertedEingabeUrsprünglichePosition.split(" ");
+        String convertedEingabeZielPosition = converter(eingabeZielPosition);
+        String[] convertedEingabeZielPositionArray = convertedEingabeZielPosition.split(" ");
+
+        for (int i = 0; i < Spielfiguren.length; i++) {
+            if (eingabeUrsprünglichePosition.equals(Spielfiguren[i].getID())) {
+                switch (Spielfiguren[i].getName()) {
+                    case "Bauer":
+                        return true;
+                    case "Springer":
+                        return true;
+                    case "Turm":
+                        if (Integer.parseInt(convertedEingabeZielPositionArray[1]) == Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1])) {
+                            if (Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) < Integer.parseInt(convertedEingabeZielPositionArray[0])) {
+                                for (int j = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) + 1; j < Integer.parseInt(convertedEingabeZielPositionArray[0]); j++) {
+                                    if (!Schachbrett[j][Integer.parseInt(convertedEingabeZielPositionArray[1])].equals(" ")) {
+                                        return false;
+                                    }
+                                }
+                            }
+
+                            if (Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) > Integer.parseInt(convertedEingabeZielPositionArray[0])) {
+                                for (int j = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) - 1; j > Integer.parseInt(convertedEingabeZielPositionArray[0]); j--) {
+                                    if (!Schachbrett[j][Integer.parseInt(convertedEingabeZielPositionArray[1])].equals(" ")) {
+                                        return false;
+                                    }
+                                }
+                            }
+                        }
+
+                        // Case Horizontale Bewegung:
+
+                        if (Integer.parseInt(convertedEingabeZielPositionArray[0]) == Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0])) {
+                            if (Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]) < Integer.parseInt(convertedEingabeZielPositionArray[1])) {
+                                for (int j = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]) + 1; j < Integer.parseInt(convertedEingabeZielPositionArray[1]); j++) {
+                                    if (!Schachbrett[Integer.parseInt(convertedEingabeZielPositionArray[0])][j].equals(" ")) {
+                                        return false;
+                                    }
+                                }
+                            }
+
+                            if (Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]) > Integer.parseInt(convertedEingabeZielPositionArray[1])) {
+                                for (int j = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]) - 1; j > Integer.parseInt(convertedEingabeZielPositionArray[1]); j--) {
+                                    if (!Schachbrett[Integer.parseInt(convertedEingabeZielPositionArray[0])][j].equals(" ")) {
+                                        return false;
+                                    }
+                                }
+                            }
+                        }
+                }
+            }
+        }
+        return true;
+    }
+
 
     public static String converter(String eingabe) {
         switch (eingabe) {
