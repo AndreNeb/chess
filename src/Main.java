@@ -1,5 +1,4 @@
 // TODO: Schachuhr in Ausgabe() einfügen
-// TODO: Spielfigurenkontrolle hinzufügen
 // TODO: Spezielle Spielzüge beachten (En passant, Bauernumwandlung & Rochade)
 // TODO: Check if Chess
 // TODO: Check if Checkmate
@@ -206,9 +205,8 @@ public class Main {
 
             if (!checkIfFigurIsInTheWay(Schachbrett, Spielfiguren, eingabeUrsprünglichePosition, eingabeZielPosition)) {
                 vorübergehenderFarbenCounter--;
-                //System.out.println("Turm darf sich nicht hierher bewegen!");
                 continue;
-            } // TODO --------------------------------------------------------------------------------------------------*/
+            } // TODO --------------------------------------------------------------------------------------------------
 
             String vergleichsObjekt = converter(eingabeZielPosition);
             String[] vergleichsObjektArray = vergleichsObjekt.split(" ");
@@ -477,10 +475,18 @@ public class Main {
 
         for (int i = 0; i < Spielfiguren.length; i++) {
             if (eingabeUrsprünglichePosition.equals(Spielfiguren[i].getID())) {
+
+                int rowUrsprünglichePosition = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                int columnUrsprünglichePosition = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+                int rowZielPosition = Integer.parseInt(convertedEingabeZielPositionArray[0]);
+                int columnZielPosition = Integer.parseInt(convertedEingabeZielPositionArray[1]);
+
                 switch (Spielfiguren[i].getName()) {
                     case "Bauer":
                         return true;
                     case "Springer":
+                        return true;
+                    case "King":
                         return true;
                     case "Turm":
                         if (Integer.parseInt(convertedEingabeZielPositionArray[1]) == Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1])) {
@@ -527,6 +533,149 @@ public class Main {
                         return true;
                     case "Läufer":
 
+                        // Wenn Bewegung nach links oben:
+                        if (Integer.parseInt(convertedEingabeZielPositionArray[0]) < Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) && Integer.parseInt(convertedEingabeZielPositionArray[1]) < Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1])) {
+                            while (rowUrsprünglichePosition > rowZielPosition + 1 && columnUrsprünglichePosition > columnZielPosition + 1) {
+                                rowUrsprünglichePosition -= 1;
+                                columnUrsprünglichePosition -= 1;
+                                if (!Schachbrett[rowUrsprünglichePosition][columnUrsprünglichePosition].equals(" ")) {
+                                    System.out.println("Läufer " + Spielfiguren[i].getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                                    return false;
+                                }
+                            }
+                        }
+
+                        // Wenn Bewegung nach rechts oben:
+                        if (Integer.parseInt(convertedEingabeZielPositionArray[0]) < Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) && Integer.parseInt(convertedEingabeZielPositionArray[1]) > Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1])) {
+                            while (rowUrsprünglichePosition > rowZielPosition + 1 && columnUrsprünglichePosition < columnZielPosition - 1) {
+                                rowUrsprünglichePosition -= 1;
+                                columnUrsprünglichePosition += 1;
+                                if (!Schachbrett[rowUrsprünglichePosition][columnUrsprünglichePosition].equals(" ")) {
+                                    System.out.println("Läufer " + Spielfiguren[i].getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                                    return false;
+                                }
+                            }
+                        }
+
+                        // Wenn Bewegung nach rechts unten:
+                        if (Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) < Integer.parseInt(convertedEingabeZielPositionArray[0]) && Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]) < Integer.parseInt(convertedEingabeZielPositionArray[1])) {
+                            while (rowUrsprünglichePosition < rowZielPosition - 1 && columnUrsprünglichePosition < columnZielPosition - 1) {
+                                rowUrsprünglichePosition += 1;
+                                columnUrsprünglichePosition += 1;
+                                if (!Schachbrett[rowUrsprünglichePosition][columnUrsprünglichePosition].equals(" ")) {
+                                    System.out.println("Läufer " + Spielfiguren[i].getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                                    return false;
+                                }
+                            }
+                        }
+
+                        // Wenn Bewegung nach links unten:
+                        if (Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) < Integer.parseInt(convertedEingabeZielPositionArray[0]) && Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]) > Integer.parseInt(convertedEingabeZielPositionArray[1])) {
+                            while (rowUrsprünglichePosition < rowZielPosition - 1 && columnUrsprünglichePosition > columnZielPosition + 1) {
+                                rowUrsprünglichePosition += 1;
+                                columnUrsprünglichePosition -= 1;
+                                if (!Schachbrett[rowUrsprünglichePosition][columnUrsprünglichePosition].equals(" ")) {
+                                    System.out.println("Läufer " + Spielfiguren[i].getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                                    return false;
+                                }
+                            }
+                        }
+                        return true;
+                    case "Queen":
+                        if (Integer.parseInt(convertedEingabeZielPositionArray[1]) == Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1])) {
+                            if (Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) < Integer.parseInt(convertedEingabeZielPositionArray[0])) {
+                                for (int j = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) + 1; j < Integer.parseInt(convertedEingabeZielPositionArray[0]); j++) {
+                                    if (!Schachbrett[j][Integer.parseInt(convertedEingabeZielPositionArray[1])].equals(" ")) {
+                                        System.out.println("Queen " + Spielfiguren[i].getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                                        return false;
+                                    }
+                                }
+                            }
+
+                            if (Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) > Integer.parseInt(convertedEingabeZielPositionArray[0])) {
+                                for (int j = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) - 1; j > Integer.parseInt(convertedEingabeZielPositionArray[0]); j--) {
+                                    if (!Schachbrett[j][Integer.parseInt(convertedEingabeZielPositionArray[1])].equals(" ")) {
+                                        System.out.println("Queen " + Spielfiguren[i].getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                                        return false;
+                                    }
+                                }
+                            }
+                        }
+
+                        // Case Horizontale Bewegung:
+
+                        if (Integer.parseInt(convertedEingabeZielPositionArray[0]) == Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0])) {
+                            if (Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]) < Integer.parseInt(convertedEingabeZielPositionArray[1])) {
+                                for (int j = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]) + 1; j < Integer.parseInt(convertedEingabeZielPositionArray[1]); j++) {
+                                    if (!Schachbrett[Integer.parseInt(convertedEingabeZielPositionArray[0])][j].equals(" ")) {
+                                        System.out.println("Queen " + Spielfiguren[i].getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                                        return false;
+                                    }
+                                }
+                            }
+
+                            if (Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]) > Integer.parseInt(convertedEingabeZielPositionArray[1])) {
+                                for (int j = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]) - 1; j > Integer.parseInt(convertedEingabeZielPositionArray[1]); j--) {
+                                    if (!Schachbrett[Integer.parseInt(convertedEingabeZielPositionArray[0])][j].equals(" ")) {
+                                        System.out.println("Queen " + Spielfiguren[i].getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                                        return false;
+                                    }
+                                }
+                            }
+                        }
+                        rowUrsprünglichePosition = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                        columnUrsprünglichePosition = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+                        rowZielPosition = Integer.parseInt(convertedEingabeZielPositionArray[0]);
+                        columnZielPosition = Integer.parseInt(convertedEingabeZielPositionArray[1]);
+
+                        // Wenn Bewegung nach links oben:
+                        if (Integer.parseInt(convertedEingabeZielPositionArray[0]) < Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) && Integer.parseInt(convertedEingabeZielPositionArray[1]) < Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1])) {
+                            while (rowUrsprünglichePosition > rowZielPosition + 1 && columnUrsprünglichePosition > columnZielPosition + 1) {
+                                rowUrsprünglichePosition -= 1;
+                                columnUrsprünglichePosition -= 1;
+                                if (!Schachbrett[rowUrsprünglichePosition][columnUrsprünglichePosition].equals(" ")) {
+                                    System.out.println("Queen " + Spielfiguren[i].getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                                    return false;
+                                }
+                            }
+                        }
+
+                        // Wenn Bewegung nach rechts oben:
+                        if (Integer.parseInt(convertedEingabeZielPositionArray[0]) < Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) && Integer.parseInt(convertedEingabeZielPositionArray[1]) > Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1])) {
+                            while (rowUrsprünglichePosition > rowZielPosition + 1 && columnUrsprünglichePosition < columnZielPosition - 1) {
+                                rowUrsprünglichePosition -= 1;
+                                columnUrsprünglichePosition += 1;
+                                if (!Schachbrett[rowUrsprünglichePosition][columnUrsprünglichePosition].equals(" ")) {
+                                    System.out.println("Queen " + Spielfiguren[i].getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                                    return false;
+                                }
+                            }
+                        }
+
+                        // Wenn Bewegung nach rechts unten:
+                        if (Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) < Integer.parseInt(convertedEingabeZielPositionArray[0]) && Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]) < Integer.parseInt(convertedEingabeZielPositionArray[1])) {
+                            while (rowUrsprünglichePosition < rowZielPosition - 1 && columnUrsprünglichePosition < columnZielPosition - 1) {
+                                rowUrsprünglichePosition += 1;
+                                columnUrsprünglichePosition += 1;
+                                if (!Schachbrett[rowUrsprünglichePosition][columnUrsprünglichePosition].equals(" ")) {
+                                    System.out.println("Queen " + Spielfiguren[i].getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                                    return false;
+                                }
+                            }
+                        }
+
+                        // Wenn Bewegung nach links unten:
+                        if (Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) < Integer.parseInt(convertedEingabeZielPositionArray[0]) && Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]) > Integer.parseInt(convertedEingabeZielPositionArray[1])) {
+                            while (rowUrsprünglichePosition < rowZielPosition - 1 && columnUrsprünglichePosition > columnZielPosition + 1) {
+                                rowUrsprünglichePosition += 1;
+                                columnUrsprünglichePosition -= 1;
+                                if (!Schachbrett[rowUrsprünglichePosition][columnUrsprünglichePosition].equals(" ")) {
+                                    System.out.println("Queen " + Spielfiguren[i].getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                                    return false;
+                                }
+                            }
+                        }
+                        return true;
                 }
             }
         }
