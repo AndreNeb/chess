@@ -209,7 +209,7 @@ public class Main {
                 vorübergehenderFarbenCounter--;
                 System.out.println("Turm darf sich nicht hierher bewegen!");
                 continue;
-            } // TODO --------------------------------------------------------------------------------------------------
+            } // TODO --------------------------------------------------------------------------------------------------*/
 
             String vergleichsObjekt = converter(eingabeZielPosition);
             String[] vergleichsObjektArray = vergleichsObjekt.split(" ");
@@ -296,15 +296,16 @@ public class Main {
             char spalteDerUrsprünglichenPosition = eingabeUrsprünglichePosition.charAt(0);
             char spalteDerZielPosition = eingabeZielPosition.charAt(0);
 
-            int zeileDerUrsprünglichenPosition = eingabeUrsprünglichePosition.charAt(1);
-            int zeileDerZielPosition = eingabeZielPosition.charAt(1);
+            int zeileDerUrsprünglichenPosition = Character.getNumericValue(eingabeUrsprünglichePosition.charAt(1));
+            int zeileDerZielPosition = Character.getNumericValue(eingabeZielPosition.charAt(1));
 
             if (spalteDerUrsprünglichenPosition + 1 == spalteDerZielPosition && zeileDerUrsprünglichenPosition + 1 == zeileDerZielPosition) {
                 return true;
-            }
-
-            if (spalteDerUrsprünglichenPosition - 1 == spalteDerZielPosition && zeileDerUrsprünglichenPosition + 1 == zeileDerZielPosition) {
+            } else if (spalteDerUrsprünglichenPosition - 1 == spalteDerZielPosition && zeileDerUrsprünglichenPosition + 1 == zeileDerZielPosition) {
                 return true;
+            } else {
+                System.out.println("Bauer " + spielfigur.getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                return false;
             }
 
         }
@@ -315,21 +316,19 @@ public class Main {
             char spalteDerUrsprünglichenPosition = eingabeUrsprünglichePosition.charAt(0);
             char spalteDerZielPosition = eingabeZielPosition.charAt(0);
 
-            int zeileDerUrsprünglichenPosition = eingabeUrsprünglichePosition.charAt(1);
-            int zeileDerZielPosition = eingabeZielPosition.charAt(1);
+            int zeileDerUrsprünglichenPosition = Character.getNumericValue(eingabeUrsprünglichePosition.charAt(1));
+            int zeileDerZielPosition = Character.getNumericValue(eingabeZielPosition.charAt(1));
 
             if (spalteDerUrsprünglichenPosition + 1 == spalteDerZielPosition && zeileDerUrsprünglichenPosition - 1 == zeileDerZielPosition) {
                 return true;
-            }
-
-            if (spalteDerUrsprünglichenPosition - 1 == spalteDerZielPosition && zeileDerUrsprünglichenPosition - 1 == zeileDerZielPosition) {
+            } else if (spalteDerUrsprünglichenPosition - 1 == spalteDerZielPosition && zeileDerUrsprünglichenPosition - 1 == zeileDerZielPosition) {
                 return true;
+            } else {
+                System.out.println("Bauer " + spielfigur.getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                return false;
             }
-
         }
-
-        System.out.println("Bauer " + spielfigur.getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
-        return false;
+        return true;
     }
 
     public static boolean tryIfMoveIsPossibleWhenGoalIsEmpty(Spielfigur spielfigur, String eingabeUrsprünglichePosition, String eingabeZielPosition) {
@@ -354,6 +353,7 @@ public class Main {
             }
 
         }
+
 
         if (spielfigur.getName().equals("Turm")) { // Für Turm Farbenunabhängig, da ja in jeder Spalte / Zeile nach oben
             // oder nach unten
