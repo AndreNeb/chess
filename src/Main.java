@@ -206,7 +206,7 @@ public class Main {
 
             if (!checkIfFigurIsInTheWay(Schachbrett, Spielfiguren, eingabeUrsprünglichePosition, eingabeZielPosition)) {
                 vorübergehenderFarbenCounter--;
-                System.out.println("Turm darf sich nicht hierher bewegen!");
+                //System.out.println("Turm darf sich nicht hierher bewegen!");
                 continue;
             } // TODO --------------------------------------------------------------------------------------------------*/
 
@@ -487,6 +487,7 @@ public class Main {
                             if (Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) < Integer.parseInt(convertedEingabeZielPositionArray[0])) {
                                 for (int j = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) + 1; j < Integer.parseInt(convertedEingabeZielPositionArray[0]); j++) {
                                     if (!Schachbrett[j][Integer.parseInt(convertedEingabeZielPositionArray[1])].equals(" ")) {
+                                        System.out.println("Turm " + Spielfiguren[i].getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
                                         return false;
                                     }
                                 }
@@ -495,6 +496,7 @@ public class Main {
                             if (Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) > Integer.parseInt(convertedEingabeZielPositionArray[0])) {
                                 for (int j = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) - 1; j > Integer.parseInt(convertedEingabeZielPositionArray[0]); j--) {
                                     if (!Schachbrett[j][Integer.parseInt(convertedEingabeZielPositionArray[1])].equals(" ")) {
+                                        System.out.println("Turm " + Spielfiguren[i].getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
                                         return false;
                                     }
                                 }
@@ -507,6 +509,7 @@ public class Main {
                             if (Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]) < Integer.parseInt(convertedEingabeZielPositionArray[1])) {
                                 for (int j = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]) + 1; j < Integer.parseInt(convertedEingabeZielPositionArray[1]); j++) {
                                     if (!Schachbrett[Integer.parseInt(convertedEingabeZielPositionArray[0])][j].equals(" ")) {
+                                        System.out.println("Turm " + Spielfiguren[i].getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
                                         return false;
                                     }
                                 }
@@ -515,11 +518,15 @@ public class Main {
                             if (Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]) > Integer.parseInt(convertedEingabeZielPositionArray[1])) {
                                 for (int j = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]) - 1; j > Integer.parseInt(convertedEingabeZielPositionArray[1]); j--) {
                                     if (!Schachbrett[Integer.parseInt(convertedEingabeZielPositionArray[0])][j].equals(" ")) {
+                                        System.out.println("Turm " + Spielfiguren[i].getFarbe() + " an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
                                         return false;
                                     }
                                 }
                             }
                         }
+                        return true;
+                    case "Läufer":
+
                 }
             }
         }
