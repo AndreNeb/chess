@@ -4,7 +4,7 @@
 // TODO: Check if Chess
 // TODO: Check if Checkmate
 // TODO: Bauer soll beim ersten Move zwei nach vorne fahren können (Neues Attribut bei Spielfigur, "Zuganzahl");
-// TODO: Bauern-Bug Fixen
+
 
 
 import java.io.File;
@@ -242,7 +242,7 @@ public class Main {
                 }
 
             } else {
-                for (int i = 0; i < Spielfiguren.length; i++) {
+                for (int i = 0; i < Spielfiguren.length; i++) { // Wenn goal nicht empty ist
                     if (Spielfiguren[i].getID().equals(eingabeUrsprünglichePosition)) {
                         for (int x = 0; x < Spielfiguren.length; x++) {
                             if (Spielfiguren[x].getID().equals(eingabeZielPosition)) {
