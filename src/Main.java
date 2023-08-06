@@ -338,24 +338,55 @@ public class Main {
     }
 
     public static boolean tryIfMoveIsPossibleWhenGoalIsEmpty(Spielfigur spielfigur, String eingabeUrsprünglichePosition, String eingabeZielPosition) {
-        if (spielfigur.getName().equals("Bauer") && spielfigur.getFarbe().equals("Weiß")) {
-            int g = Character.getNumericValue(eingabeZielPosition.charAt(1));
-            int h = Character.getNumericValue(eingabeUrsprünglichePosition.charAt(1)) + 1;
+        if (spielfigur.getZuganzahl() > 0) {
+            if (spielfigur.getName().equals("Bauer") && spielfigur.getFarbe().equals("Weiß")) {
+                int g = Character.getNumericValue(eingabeZielPosition.charAt(1));
+                int h = Character.getNumericValue(eingabeUrsprünglichePosition.charAt(1)) + 1;
 
-            if (eingabeUrsprünglichePosition.charAt(0) != eingabeZielPosition.charAt(0) || h != g) {
-                System.out.println("Bauer Weiß an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
-                return false;
+                if (eingabeUrsprünglichePosition.charAt(0) != eingabeZielPosition.charAt(0) || h != g) {
+                    System.out.println("Bauer Weiß an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                    return false;
+                }
+
             }
 
+            if (spielfigur.getName().equals("Bauer") && spielfigur.getFarbe().equals("Grün")) {
+                int g = Character.getNumericValue(eingabeZielPosition.charAt(1));
+                int h = Character.getNumericValue(eingabeUrsprünglichePosition.charAt(1)) - 1;
+
+                if (eingabeUrsprünglichePosition.charAt(0) != eingabeZielPosition.charAt(0) || h != g) {
+                    System.out.println("Bauer Grün an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                    return false;
+                }
+
+            }
         }
+        if (spielfigur.getZuganzahl() == 0) {
+            if (spielfigur.getName().equals("Bauer") && spielfigur.getFarbe().equals("Weiß")) {
+                int g = Character.getNumericValue(eingabeZielPosition.charAt(1));
+                int h = Character.getNumericValue(eingabeUrsprünglichePosition.charAt(1)) + 1;
+                int k = Character.getNumericValue(eingabeUrsprünglichePosition.charAt(1)) + 2;
 
-        if (spielfigur.getName().equals("Bauer") && spielfigur.getFarbe().equals("Grün")) {
-            int g = Character.getNumericValue(eingabeZielPosition.charAt(1));
-            int h = Character.getNumericValue(eingabeUrsprünglichePosition.charAt(1)) - 1;
+                if (eingabeUrsprünglichePosition.charAt(0) != eingabeZielPosition.charAt(0)) {
+                    if (h != g || k != g) {
+                        System.out.println("Bauer Weiß an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                        return false;
+                    }
+                }
+            }
 
-            if (eingabeUrsprünglichePosition.charAt(0) != eingabeZielPosition.charAt(0) || h != g) {
-                System.out.println("Bauer Grün an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
-                return false;
+
+            if (spielfigur.getName().equals("Bauer") && spielfigur.getFarbe().equals("Grün")) {
+                int g = Character.getNumericValue(eingabeZielPosition.charAt(1));
+                int h = Character.getNumericValue(eingabeUrsprünglichePosition.charAt(1)) - 1;
+                int k = Character.getNumericValue(eingabeUrsprünglichePosition.charAt(1)) - 2;
+
+                if (eingabeUrsprünglichePosition.charAt(0) != eingabeZielPosition.charAt(0)) {
+                    if (h != g || k != g) {
+                        System.out.println("Bauer Grün an der Stelle " + eingabeUrsprünglichePosition + " ist nicht befugt, an die Stelle " + eingabeZielPosition + " zu fahren!");
+                        return false;
+                    }
+                }
             }
 
         }
