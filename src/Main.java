@@ -2,7 +2,6 @@
 // TODO: Spezielle Spielzüge beachten (En passant, Bauernumwandlung & Rochade)
 // TODO: Check if Chess
 // TODO: Check if Checkmate
-// TODO: Bauer soll beim ersten Move zwei nach vorne fahren können
 
 
 import java.io.File;
