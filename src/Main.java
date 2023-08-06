@@ -6,7 +6,6 @@
 // TODO: Bauer soll beim ersten Move zwei nach vorne fahren können (Neues Attribut bei Spielfigur, "Zuganzahl");
 
 
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -242,7 +241,7 @@ public class Main {
                 }
 
             } else {
-                for (int i = 0; i < Spielfiguren.length; i++) { // Wenn goal nicht empty ist
+                for (int i = 0; i < Spielfiguren.length; i++) {
                     if (Spielfiguren[i].getID().equals(eingabeUrsprünglichePosition)) {
                         for (int x = 0; x < Spielfiguren.length; x++) {
                             if (Spielfiguren[x].getID().equals(eingabeZielPosition)) {
@@ -270,9 +269,10 @@ public class Main {
                                         Schachbrett[iIndex2][jIndex2] = Spielfiguren[i].getSymbol();
 
                                         Spielfiguren[i].setID(eingabeZielPosition);
-
+                                        break;
                                     } else {
                                         vorübergehenderFarbenCounter--;
+
                                     }
                                 }
                             }
