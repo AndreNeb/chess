@@ -2,7 +2,7 @@
 // TODO: Spezielle Spielzüge beachten (En passant, Bauernumwandlung & Rochade)
 // TODO: Check if Chess
 // TODO: Check if Checkmate
-// TODO: Bauer soll beim ersten Move zwei nach vorne fahren können (Neues Attribut bei Spielfigur, "Zuganzahl");
+// TODO: Bauer soll beim ersten Move zwei nach vorne fahren können
 
 
 import java.io.File;
@@ -17,41 +17,41 @@ public class Main {
 
         // Init Chess Figures
 
-        Spielfigur bauerA2 = new Spielfigur(6, 0, "Weiß", "♟", "A2", "Bauer");
-        Spielfigur bauerB2 = new Spielfigur(6, 1, "Weiß", "♟", "B2", "Bauer");
-        Spielfigur bauerC2 = new Spielfigur(6, 2, "Weiß", "♟", "C2", "Bauer");
-        Spielfigur bauerD2 = new Spielfigur(6, 3, "Weiß", "♟", "D2", "Bauer");
-        Spielfigur bauerE2 = new Spielfigur(6, 4, "Weiß", "♟", "E2", "Bauer");
-        Spielfigur bauerF2 = new Spielfigur(6, 5, "Weiß", "♟", "F2", "Bauer");
-        Spielfigur bauerG2 = new Spielfigur(6, 6, "Weiß", "♟", "G2", "Bauer");
-        Spielfigur bauerH2 = new Spielfigur(6, 7, "Weiß", "♟", "H2", "Bauer");
+        Spielfigur bauerA2 = new Spielfigur(6, 0, "Weiß", "♟", "A2", "Bauer", 0);
+        Spielfigur bauerB2 = new Spielfigur(6, 1, "Weiß", "♟", "B2", "Bauer", 0);
+        Spielfigur bauerC2 = new Spielfigur(6, 2, "Weiß", "♟", "C2", "Bauer", 0);
+        Spielfigur bauerD2 = new Spielfigur(6, 3, "Weiß", "♟", "D2", "Bauer", 0);
+        Spielfigur bauerE2 = new Spielfigur(6, 4, "Weiß", "♟", "E2", "Bauer", 0);
+        Spielfigur bauerF2 = new Spielfigur(6, 5, "Weiß", "♟", "F2", "Bauer", 0);
+        Spielfigur bauerG2 = new Spielfigur(6, 6, "Weiß", "♟", "G2", "Bauer", 0);
+        Spielfigur bauerH2 = new Spielfigur(6, 7, "Weiß", "♟", "H2", "Bauer", 0);
 
-        Spielfigur turmA1 = new Spielfigur(7, 0, "Weiß", "♜", "A1", "Turm");
-        Spielfigur turmH1 = new Spielfigur(7, 7, "Weiß", "♜", "H1", "Turm");
-        Spielfigur springerB1 = new Spielfigur(7, 1, "Weiß", "♞", "B1", "Springer");
-        Spielfigur springerG1 = new Spielfigur(7, 6, "Weiß", "♞", "G1", "Springer");
-        Spielfigur läuferC1 = new Spielfigur(7, 2, "Weiß", "♝", "C1", "Läufer");
-        Spielfigur läuferF1 = new Spielfigur(7, 5, "Weiß", "♝", "F1", "Läufer");
-        Spielfigur queenD1 = new Spielfigur(7, 3, "Weiß", "♛", "D1", "Queen");
-        Spielfigur kingE1 = new Spielfigur(7, 4, "Weiß", "♚", "E1", "King");
+        Spielfigur turmA1 = new Spielfigur(7, 0, "Weiß", "♜", "A1", "Turm", 0);
+        Spielfigur turmH1 = new Spielfigur(7, 7, "Weiß", "♜", "H1", "Turm", 0);
+        Spielfigur springerB1 = new Spielfigur(7, 1, "Weiß", "♞", "B1", "Springer", 0);
+        Spielfigur springerG1 = new Spielfigur(7, 6, "Weiß", "♞", "G1", "Springer", 0);
+        Spielfigur läuferC1 = new Spielfigur(7, 2, "Weiß", "♝", "C1", "Läufer", 0);
+        Spielfigur läuferF1 = new Spielfigur(7, 5, "Weiß", "♝", "F1", "Läufer", 0);
+        Spielfigur queenD1 = new Spielfigur(7, 3, "Weiß", "♛", "D1", "Queen", 0);
+        Spielfigur kingE1 = new Spielfigur(7, 4, "Weiß", "♚", "E1", "King", 0);
 
-        Spielfigur bauerA7 = new Spielfigur(1, 0, "Grün", "\u001B[32m♟\u001B[0m", "A7", "Bauer");
-        Spielfigur bauerB7 = new Spielfigur(1, 1, "Grün", "\u001B[32m♟\u001B[0m", "B7", "Bauer");
-        Spielfigur bauerC7 = new Spielfigur(1, 2, "Grün", "\u001B[32m♟\u001B[0m", "C7", "Bauer");
-        Spielfigur bauerD7 = new Spielfigur(1, 3, "Grün", "\u001B[32m♟\u001B[0m", "D7", "Bauer");
-        Spielfigur bauerE7 = new Spielfigur(1, 4, "Grün", "\u001B[32m♟\u001B[0m", "E7", "Bauer");
-        Spielfigur bauerF7 = new Spielfigur(1, 5, "Grün", "\u001B[32m♟\u001B[0m", "F7", "Bauer");
-        Spielfigur bauerG7 = new Spielfigur(1, 6, "Grün", "\u001B[32m♟\u001B[0m", "G7", "Bauer");
-        Spielfigur bauerH7 = new Spielfigur(1, 7, "Grün", "\u001B[32m♟\u001B[0m", "H7", "Bauer");
+        Spielfigur bauerA7 = new Spielfigur(1, 0, "Grün", "\u001B[32m♟\u001B[0m", "A7", "Bauer", 0);
+        Spielfigur bauerB7 = new Spielfigur(1, 1, "Grün", "\u001B[32m♟\u001B[0m", "B7", "Bauer", 0);
+        Spielfigur bauerC7 = new Spielfigur(1, 2, "Grün", "\u001B[32m♟\u001B[0m", "C7", "Bauer", 0);
+        Spielfigur bauerD7 = new Spielfigur(1, 3, "Grün", "\u001B[32m♟\u001B[0m", "D7", "Bauer", 0);
+        Spielfigur bauerE7 = new Spielfigur(1, 4, "Grün", "\u001B[32m♟\u001B[0m", "E7", "Bauer", 0);
+        Spielfigur bauerF7 = new Spielfigur(1, 5, "Grün", "\u001B[32m♟\u001B[0m", "F7", "Bauer", 0);
+        Spielfigur bauerG7 = new Spielfigur(1, 6, "Grün", "\u001B[32m♟\u001B[0m", "G7", "Bauer", 0);
+        Spielfigur bauerH7 = new Spielfigur(1, 7, "Grün", "\u001B[32m♟\u001B[0m", "H7", "Bauer", 0);
 
-        Spielfigur turmA8 = new Spielfigur(0, 0, "Grün", "\u001B[32m♜\u001B[0m", "A8", "Turm");
-        Spielfigur turmH8 = new Spielfigur(0, 7, "Grün", "\u001B[32m♜\u001B[0m", "H8", "Turm");
-        Spielfigur springerB8 = new Spielfigur(0, 1, "Grün", "\u001B[32m♞\u001B[0m", "B8", "Springer");
-        Spielfigur springerG8 = new Spielfigur(0, 6, "Grün", "\u001B[32m♞\u001B[0m", "G8", "Springer");
-        Spielfigur läuferC8 = new Spielfigur(0, 2, "Grün", "\u001B[32m♝\u001B[0m", "C8", "Läufer");
-        Spielfigur läuferF8 = new Spielfigur(0, 5, "Grün", "\u001B[32m♝\u001B[0m", "F8", "Läufer");
-        Spielfigur queenD8 = new Spielfigur(0, 3, "Grün", "\u001B[32m♛\u001B[0m", "D8", "Queen");
-        Spielfigur kingE8 = new Spielfigur(0, 4, "Grün", "\u001B[32m♚\u001B[0m", "E8", "King");
+        Spielfigur turmA8 = new Spielfigur(0, 0, "Grün", "\u001B[32m♜\u001B[0m", "A8", "Turm", 0);
+        Spielfigur turmH8 = new Spielfigur(0, 7, "Grün", "\u001B[32m♜\u001B[0m", "H8", "Turm", 0);
+        Spielfigur springerB8 = new Spielfigur(0, 1, "Grün", "\u001B[32m♞\u001B[0m", "B8", "Springer", 0);
+        Spielfigur springerG8 = new Spielfigur(0, 6, "Grün", "\u001B[32m♞\u001B[0m", "G8", "Springer", 0);
+        Spielfigur läuferC8 = new Spielfigur(0, 2, "Grün", "\u001B[32m♝\u001B[0m", "C8", "Läufer", 0);
+        Spielfigur läuferF8 = new Spielfigur(0, 5, "Grün", "\u001B[32m♝\u001B[0m", "F8", "Läufer", 0);
+        Spielfigur queenD8 = new Spielfigur(0, 3, "Grün", "\u001B[32m♛\u001B[0m", "D8", "Queen", 0);
+        Spielfigur kingE8 = new Spielfigur(0, 4, "Grün", "\u001B[32m♚\u001B[0m", "E8", "King", 0);
 
         Spielfigur[] Spielfiguren = {bauerA2, bauerB2, bauerC2, bauerD2, bauerE2, bauerF2, bauerG2, bauerH2, turmA1, turmH1, springerB1, springerG1, läuferC1, läuferF1, queenD1, kingE1, bauerA7, bauerB7, bauerC7, bauerD7, bauerE7, bauerF7, bauerG7, bauerH7, turmA8, turmH8, springerB8, springerG8, läuferC8, läuferF8, queenD8, kingE8};
         String[][] Schachbrett = new String[9][9];
@@ -206,7 +206,7 @@ public class Main {
             if (!checkIfFigurIsInTheWay(Schachbrett, Spielfiguren, eingabeUrsprünglichePosition, eingabeZielPosition)) {
                 vorübergehenderFarbenCounter--;
                 continue;
-            } // TODO --------------------------------------------------------------------------------------------------
+            }
 
             String vergleichsObjekt = converter(eingabeZielPosition);
             String[] vergleichsObjektArray = vergleichsObjekt.split(" ");
@@ -232,6 +232,11 @@ public class Main {
                             int iIndex2 = Integer.parseInt(array2[0]);
                             int jIndex2 = Integer.parseInt(array2[1]);
                             Schachbrett[iIndex2][jIndex2] = Spielfiguren[i].getSymbol();
+
+                            Spielfiguren[i].setID(eingabeZielPosition);
+                            int zuganzahl = Spielfiguren[i].getZuganzahl();
+                            zuganzahl++;
+                            Spielfiguren[i].setZuganzahl(zuganzahl);
                         } else {
                             vorübergehenderFarbenCounter--;
                         }
@@ -267,6 +272,9 @@ public class Main {
                                         Schachbrett[iIndex2][jIndex2] = Spielfiguren[i].getSymbol();
 
                                         Spielfiguren[i].setID(eingabeZielPosition);
+                                        int zuganzahl = Spielfiguren[i].getZuganzahl();
+                                        zuganzahl++;
+                                        Spielfiguren[i].setZuganzahl(zuganzahl);
                                         break;
                                     } else {
                                         vorübergehenderFarbenCounter--;

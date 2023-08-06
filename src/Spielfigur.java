@@ -1,10 +1,20 @@
 public class Spielfigur {
     private int positionsNummerVertikal;
-    private int poeitionsNummerHorizontal;
+    private int positionsNummerHorizontal;
     private String Farbe;
     private String Symbol;
     private String ID;
     private String Name;
+
+    private int zuganzahl;
+
+    public int getZuganzahl() {
+        return zuganzahl;
+    }
+
+    public void setZuganzahl(int zuganzahl) {
+        this.zuganzahl = zuganzahl;
+    }
 
     public int getPositionsNummerVertikal() {
         return positionsNummerVertikal;
@@ -15,11 +25,11 @@ public class Spielfigur {
     }
 
     public int getPoeitionsNummerHorizontal() {
-        return poeitionsNummerHorizontal;
+        return positionsNummerHorizontal;
     }
 
     public void setPoeitionsNummerHorizontal(int poeitionsNummerHorizontal) {
-        this.poeitionsNummerHorizontal = poeitionsNummerHorizontal;
+        this.positionsNummerHorizontal = poeitionsNummerHorizontal;
     }
 
     public String getFarbe() {
@@ -54,13 +64,14 @@ public class Spielfigur {
         Name = name;
     }
 
-    public Spielfigur(int positionsNummerVertikal, int positionsNummerHorizontal, String farbe, String symbol, String id, String name) {
+    public Spielfigur(int positionsNummerVertikal, int positionsNummerHorizontal, String farbe, String symbol, String id, String name, int zuganzahl) {
         this.positionsNummerVertikal = positionsNummerVertikal;
-        this.poeitionsNummerHorizontal = positionsNummerHorizontal;
+        this.positionsNummerHorizontal = positionsNummerHorizontal;
         Farbe = farbe;
         Symbol = symbol;
         ID = id;
         Name = name;
+        this.zuganzahl = zuganzahl;
     }
 
 
