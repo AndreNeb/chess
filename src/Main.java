@@ -1,6 +1,6 @@
 // TODO: Spezielle Spielzüge beachten (En passant, Bauernumwandlung & Rochade)
 // TODO: ShowPossibilities() mit * erstellen
-// TODO: Schachuhr & Geschlagene Figuren in Ausgabe() einfügen
+// TODO: Geschlagene Figuren in Ausgabe() einfügen
 // TODO: Check if Chess
 // TODO: Check if Checkmate
 
@@ -92,15 +92,20 @@ public class Main {
         Schachbrett[7][3] = queenD1.getSymbol();
         Schachbrett[7][4] = kingE1.getSymbol();
 
-        Ausgabe(Schachbrett);
+
+        Spielfigur[] vonWeißGeschlageneSpielfiguren = new Spielfigur[16];
+        Spielfigur[] vonGrünGeschlageneSpielfiguren = new Spielfigur[16];
+
+        System.out.println();
+        Ausgabe(Schachbrett, vonWeißGeschlageneSpielfiguren, vonGrünGeschlageneSpielfiguren);
         System.out.println();
 
-        moveFigures(Spielfiguren, Schachbrett);
+        moveFigures(Spielfiguren, Schachbrett, vonWeißGeschlageneSpielfiguren, vonGrünGeschlageneSpielfiguren);
 
         // -------------------------------------------------------------------------------------------------------------
     }
 
-    public static void Ausgabe(String[][] Schachbrett) {
+    public static void Ausgabe(String[][] Schachbrett, Spielfigur[] vonWeißGeschlageneSpielfiguren, Spielfigur[] vonGrünGeschlageneSpielfiguren) {
 
         char[] buchstaben = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
 
@@ -120,6 +125,28 @@ public class Main {
                 }
             }
 
+            // Ausgabe von den von grün geschlagenen Figuren
+            if (i == 2) {
+                System.out.print("\tVon Grün geschlagene Figuren: ");
+                for (int j = 0; j < vonGrünGeschlageneSpielfiguren.length; j++) {
+                    if (vonGrünGeschlageneSpielfiguren[j] == null) {
+                        break;
+                    }
+                    System.out.print(vonGrünGeschlageneSpielfiguren[j].getSymbol() + " ");
+                }
+            }
+
+            // Ausgabe von den von weiß geschlagenen Figuren
+            if (i == 5) {
+                System.out.print("\tVon Weiß geschlagene Figuren: ");
+                for (int j = 0; j < vonWeißGeschlageneSpielfiguren.length; j++) {
+                    if (vonWeißGeschlageneSpielfiguren[j] == null) {
+                        break;
+                    }
+                    System.out.print(vonWeißGeschlageneSpielfiguren[j].getSymbol() + " ");
+                }
+            }
+
             System.out.println();
         }
 
@@ -130,7 +157,11 @@ public class Main {
 
     }
 
-    public static void moveFigures(Spielfigur[] Spielfiguren, String[][] Schachbrett) {
+    public static void moveFigures(Spielfigur[] Spielfiguren, String[][] Schachbrett, Spielfigur[] vonWeißGeschlageneSpielfiguren, Spielfigur[] vonGrünGeschlageneSpielfiguren) {
+
+        int vonWeißGeschlageneSpielfigurenCounter = 0;
+        int vonGrünGeschlagendeSpielfigurenCounter = 0;
+
         int vorübergehenderFarbenCounter = 0;
         boolean colorError = false;
         System.out.println();
@@ -259,6 +290,14 @@ public class Main {
                                         System.out.println(Spielfiguren[i].getName() + " " + Spielfiguren[i].getFarbe() + " hat " + Spielfiguren[x].getName() + " " + Spielfiguren[x].getFarbe() + " an der Stelle " + Spielfiguren[x].getID() + " geschlagen!");
                                         System.out.println();
                                         Spielfiguren[x].setID("GESCHLAGENE FIGUR");
+                                        if (Spielfiguren[x].getFarbe().equals("Weiß")) {
+                                            vonGrünGeschlageneSpielfiguren[vonGrünGeschlagendeSpielfigurenCounter] = Spielfiguren[x];
+                                            vonGrünGeschlagendeSpielfigurenCounter++;
+                                        }
+                                        else if (Spielfiguren[x].getFarbe().equals("Grün")) {
+                                            vonWeißGeschlageneSpielfiguren[vonWeißGeschlageneSpielfigurenCounter] = Spielfiguren[x];
+                                            vonWeißGeschlageneSpielfigurenCounter++;
+                                        }
 
                                         String codeDerUrsprünglichenPosition = converter(eingabeUrsprünglichePosition);
                                         String[] array = codeDerUrsprünglichenPosition.split(" ");
@@ -290,7 +329,7 @@ public class Main {
                 }
 
             }
-            Ausgabe(Schachbrett);
+            Ausgabe(Schachbrett, vonWeißGeschlageneSpielfiguren, vonGrünGeschlageneSpielfiguren);
         }
 
     }
