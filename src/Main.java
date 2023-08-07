@@ -1,6 +1,5 @@
 // TODO: Spezielle Spielzüge beachten (En passant, Bauernumwandlung & Rochade)
 // TODO: ShowPossibilities() mit * erstellen
-// TODO: Geschlagene Figuren in Ausgabe() einfügen
 // TODO: Check if Chess
 // TODO: Check if Checkmate
 
