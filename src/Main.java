@@ -2,6 +2,7 @@
 // TODO: ShowPossibilities() mit * erstellen
 // TODO: Check if Chess
 // TODO: Check if Checkmate
+// TODO: README verbessern & auf Englisch schreiben
 
 
 import java.io.File;
