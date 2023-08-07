@@ -1,5 +1,6 @@
-// TODO: Schachuhr in Ausgabe() einfügen
 // TODO: Spezielle Spielzüge beachten (En passant, Bauernumwandlung & Rochade)
+// TODO: ShowPossibilities() mit * erstellen
+// TODO: Schachuhr & Geschlagene Figuren in Ausgabe() einfügen
 // TODO: Check if Chess
 // TODO: Check if Checkmate
 
