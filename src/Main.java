@@ -1,8 +1,11 @@
 // TODO: Spezielle Spielzüge beachten (En passant, Bauernumwandlung & Rochade)
-// TODO: ShowPossibilities() mit * erstellen
-// TODO: Check if Chess
-// TODO: Check if Checkmate
 // TODO: README verbessern & auf Englisch schreiben
+// TODO: ShowPossibilities() mit * erstellen (Aufpassen bei checkIfFigurIsInWay())
+// TODO: Check if Checkmate
+// TODO: Check if Chess
+
+
+
 
 
 import java.io.File;
@@ -293,8 +296,7 @@ public class Main {
                                         if (Spielfiguren[x].getFarbe().equals("Weiß")) {
                                             vonGrünGeschlageneSpielfiguren[vonGrünGeschlagendeSpielfigurenCounter] = Spielfiguren[x];
                                             vonGrünGeschlagendeSpielfigurenCounter++;
-                                        }
-                                        else if (Spielfiguren[x].getFarbe().equals("Grün")) {
+                                        } else if (Spielfiguren[x].getFarbe().equals("Grün")) {
                                             vonWeißGeschlageneSpielfiguren[vonWeißGeschlageneSpielfigurenCounter] = Spielfiguren[x];
                                             vonWeißGeschlageneSpielfigurenCounter++;
                                         }
