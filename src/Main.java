@@ -5,9 +5,6 @@
 // TODO: Check if Chess
 
 
-
-
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -234,6 +231,24 @@ public class Main {
                 continue;
             }
 
+            boolean checkVariable = showPossibleMoves(Schachbrett, eingabeUrsprünglichePosition, Spielfiguren); // TODO
+
+            if (checkVariable) {
+                Ausgabe(Schachbrett, vonWeißGeschlageneSpielfiguren, vonGrünGeschlageneSpielfiguren);
+            }
+
+            for (int i = 0; i < Schachbrett.length; i++) {
+                for (int j = 0; j < Schachbrett[i].length; j++) {
+                    if (Schachbrett[i][j] == null)
+                        continue;
+                    if (Schachbrett[i][j].equals("*") || Schachbrett[i][j].equals("\u001B[32m*\u001B[0m")) {
+                        Schachbrett[i][j] = " ";
+                    }
+                }
+
+            }
+
+            System.out.println();
             System.out.println("Wohin möchtest du sie bewegen?: ");
             String eingabeZielPosition = sc.next();
 
@@ -241,6 +256,7 @@ public class Main {
                 vorübergehenderFarbenCounter--;
                 continue;
             }
+
 
             String vergleichsObjekt = converter(eingabeZielPosition);
             String[] vergleichsObjektArray = vergleichsObjekt.split(" ");
@@ -760,6 +776,62 @@ public class Main {
             }
         }
         return true;
+    }
+
+    public static boolean showPossibleMoves(String[][] Schachbrett, String eingabeUrsprünglichePosition, Spielfigur[] Spielfiguren) {
+        String convertedEingabeUrsprünglichePosition = converter(eingabeUrsprünglichePosition);
+        String[] convertedEingabeUrsprünglichePositionArray = convertedEingabeUrsprünglichePosition.split(" ");
+
+
+        for (int i = 0; i < Spielfiguren.length; i++) {
+            if (Spielfiguren[i].getID().equals(eingabeUrsprünglichePosition)) {
+                if (Spielfiguren[i].getName().equals("Bauer") && Spielfiguren[i].getFarbe().equals("Weiß") && Spielfiguren[i].getZuganzahl() != 0) {
+                    if (Schachbrett[Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) - 1][Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1])].equals(" ")) {
+                        Schachbrett[Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) - 1][Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1])] = "*";
+                        return true;
+                    }
+                }
+
+                if (Spielfiguren[i].getName().equals("Bauer") && Spielfiguren[i].getFarbe().equals("Weiß") && Spielfiguren[i].getZuganzahl() == 0) {
+                    if (Schachbrett[Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) - 1][Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1])].equals(" ") && Schachbrett[Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) - 2][Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1])].equals(" ")) {
+                        Schachbrett[Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) - 1][Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1])] = "*";
+                        Schachbrett[Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) - 2][Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1])] = "*";
+                        return true;
+                    }
+                }
+
+
+                if (Spielfiguren[i].getName().equals("Bauer") && Spielfiguren[i].getFarbe().equals("Grün") && Spielfiguren[i].getZuganzahl() != 0) {
+                    if (Schachbrett[Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) + 1][Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1])].equals(" ")) {
+                        Schachbrett[Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) + 1][Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1])] = "\u001B[32m*\u001B[0m";
+                        return true;
+                    }
+                }
+
+                if (Spielfiguren[i].getName().equals("Bauer") && Spielfiguren[i].getFarbe().equals("Grün") && Spielfiguren[i].getZuganzahl() == 0) {
+                    if (Schachbrett[Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) + 1][Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1])].equals(" ") && Schachbrett[Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) + 2][Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1])].equals(" ")) {
+                        Schachbrett[Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) + 1][Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1])] = "\u001B[32m*\u001B[0m";
+                        Schachbrett[Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]) + 2][Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1])] = "\u001B[32m*\u001B[0m";
+                        return true;
+                    }
+                }
+
+                // Wenn die Spielfigur ein Turm ist:
+
+
+                if (Spielfiguren[i].getName().equals("Turm")) {
+
+                    int rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    int cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+
+
+
+
+                }
+            }
+        }
+
+        return false;
     }
 
 
