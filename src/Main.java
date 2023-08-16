@@ -1420,6 +1420,138 @@ public class Main {
                 }
 
 
+                if (Spielfiguren[i].getName().equals("Queen") && Spielfiguren[i].getFarbe().equals("Grün")) {
+
+                    // Anteil des grünen Turmes:
+
+                    int rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    int cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+
+
+                    while (true) {
+                        try {
+                            rows--;
+                            if (Schachbrett[rows][cols] == null || !Schachbrett[rows][cols].equals(" ")) {
+                                break;
+                            }
+                            Schachbrett[rows][cols] = "\u001B[32m*\u001B[0m";
+                        } catch (IndexOutOfBoundsException e) {
+                            break;
+                        }
+                    }
+
+                    rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+
+                    while (true) {
+                        try {
+                            rows++;
+                            if (Schachbrett[rows][cols] == null || !Schachbrett[rows][cols].equals(" ")) {
+                                break;
+                            }
+                            Schachbrett[rows][cols] = "\u001B[32m*\u001B[0m";
+                        } catch (IndexOutOfBoundsException e) {
+                            break;
+                        }
+
+                    }
+
+                    rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+
+                    while (true) {
+                        try {
+                            cols++;
+                            if (Schachbrett[rows][cols] == null || !Schachbrett[rows][cols].equals(" ")) {
+                                break;
+                            }
+                            Schachbrett[rows][cols] = "\u001B[32m*\u001B[0m";
+                        } catch (IndexOutOfBoundsException e) {
+                            break;
+                        }
+                    }
+
+                    rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+
+                    while (true) {
+                        try {
+                            cols--;
+                            if (Schachbrett[rows][cols] == null || !Schachbrett[rows][cols].equals(" ")) {
+                                break;
+                            }
+                            Schachbrett[rows][cols] = "\u001B[32m*\u001B[0m";
+                        } catch (IndexOutOfBoundsException e) {
+                            break;
+                        }
+                    }
+
+                    // Anteil des grünen Läufers:
+
+                    rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+
+                    while (true) {
+                        try {
+                            rows--;
+                            cols--;
+                            if (Schachbrett[rows][cols] == null || !Schachbrett[rows][cols].equals(" ")) {
+                                break;
+                            }
+                            Schachbrett[rows][cols] = "\u001B[32m*\u001B[0m";
+                        } catch (IndexOutOfBoundsException e) {
+                            break;
+                        }
+                    }
+
+                    rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+                    while (true) {
+                        try {
+                            rows--;
+                            cols++;
+                            if (Schachbrett[rows][cols] == null || !Schachbrett[rows][cols].equals(" ")) {
+                                break;
+                            }
+                            Schachbrett[rows][cols] = "\u001B[32m*\u001B[0m";
+                        } catch (IndexOutOfBoundsException e) {
+                            break;
+                        }
+                    }
+
+                    rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+                    while (true) {
+                        try {
+                            rows++;
+                            cols++;
+                            if (Schachbrett[rows][cols] == null || !Schachbrett[rows][cols].equals(" ")) {
+                                break;
+                            }
+                            Schachbrett[rows][cols] = "\u001B[32m*\u001B[0m";
+                        } catch (IndexOutOfBoundsException e) {
+                            break;
+                        }
+                    }
+
+                    rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+                    while (true) {
+                        try {
+                            rows++;
+                            cols--;
+                            if (Schachbrett[rows][cols] == null || !Schachbrett[rows][cols].equals(" ")) {
+                                break;
+                            }
+                            Schachbrett[rows][cols] = "\u001B[32m*\u001B[0m";
+                        } catch (IndexOutOfBoundsException e) {
+                            break;
+                        }
+                    }
+
+                    return true;
+                }
+
             }
         }
         return false;
