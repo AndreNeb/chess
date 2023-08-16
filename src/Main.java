@@ -966,7 +966,7 @@ public class Main {
                     int zielCol = cols + 1;
 
                     try {
-                        if (Schachbrett[zielRow][zielCol] == null || Schachbrett[zielRow][zielCol].equals(" ")) {
+                        if (Schachbrett[zielRow][zielCol] != null && Schachbrett[zielRow][zielCol].equals(" ")) {
                             Schachbrett[zielRow][zielCol] = "*";
                         }
                     } catch (IndexOutOfBoundsException e) {
@@ -977,7 +977,7 @@ public class Main {
                     zielCol = cols + 2;
 
                     try {
-                        if (Schachbrett[zielRow][zielCol] == null || Schachbrett[zielRow][zielCol].equals(" ")) {
+                        if (Schachbrett[zielRow][zielCol] != null && Schachbrett[zielRow][zielCol].equals(" ")) {
                             Schachbrett[zielRow][zielCol] = "*";
                         }
                     } catch (IndexOutOfBoundsException e) {
@@ -989,7 +989,7 @@ public class Main {
                     zielCol = cols + 2;
 
                     try {
-                        if (Schachbrett[zielRow][zielCol] == null || Schachbrett[zielRow][zielCol].equals(" ")) {
+                        if (Schachbrett[zielRow][zielCol] != null && Schachbrett[zielRow][zielCol].equals(" ")) {
                             Schachbrett[zielRow][zielCol] = "*";
                         }
                     } catch (IndexOutOfBoundsException e) {
@@ -1000,7 +1000,7 @@ public class Main {
                     zielCol = cols + 1;
 
                     try {
-                        if (Schachbrett[zielRow][zielCol] == null || Schachbrett[zielRow][zielCol].equals(" ")) {
+                        if (Schachbrett[zielRow][zielCol] != null && Schachbrett[zielRow][zielCol].equals(" ")) {
                             Schachbrett[zielRow][zielCol] = "*";
                         }
                     } catch (IndexOutOfBoundsException e) {
@@ -1012,7 +1012,7 @@ public class Main {
                     zielCol = cols - 1;
 
                     try {
-                        if (Schachbrett[zielRow][zielCol] == null || Schachbrett[zielRow][zielCol].equals(" ")) {
+                        if (Schachbrett[zielRow][zielCol] != null && Schachbrett[zielRow][zielCol].equals(" ")) {
                             Schachbrett[zielRow][zielCol] = "*";
                         }
                     } catch (IndexOutOfBoundsException e) {
@@ -1023,7 +1023,7 @@ public class Main {
                     zielCol = cols - 2;
 
                     try {
-                        if (Schachbrett[zielRow][zielCol] == null || Schachbrett[zielRow][zielCol].equals(" ")) {
+                        if (Schachbrett[zielRow][zielCol] != null && Schachbrett[zielRow][zielCol].equals(" ")) {
                             Schachbrett[zielRow][zielCol] = "*";
                         }
                     } catch (IndexOutOfBoundsException e) {
@@ -1035,7 +1035,7 @@ public class Main {
                     zielCol = cols - 2;
 
                     try {
-                        if (Schachbrett[zielRow][zielCol] == null || Schachbrett[zielRow][zielCol].equals(" ")) {
+                        if (Schachbrett[zielRow][zielCol] != null && Schachbrett[zielRow][zielCol].equals(" ")) {
                             Schachbrett[zielRow][zielCol] = "*";
                         }
                     } catch (IndexOutOfBoundsException e) {
@@ -1046,7 +1046,7 @@ public class Main {
                     zielCol = cols - 1;
 
                     try {
-                        if (Schachbrett[zielRow][zielCol] == null || Schachbrett[zielRow][zielCol].equals(" ")) {
+                        if (Schachbrett[zielRow][zielCol] != null && Schachbrett[zielRow][zielCol].equals(" ")) {
                             Schachbrett[zielRow][zielCol] = "*";
                         }
                     } catch (IndexOutOfBoundsException e) {
@@ -1064,7 +1064,7 @@ public class Main {
                     int zielCol = cols + 1;
 
                     try {
-                        if (Schachbrett[zielRow][zielCol] == null || Schachbrett[zielRow][zielCol].equals(" ")) {
+                        if (Schachbrett[zielRow][zielCol] != null && Schachbrett[zielRow][zielCol].equals(" ")) {
                             Schachbrett[zielRow][zielCol] = "\u001B[32m*\u001B[0m";
                         }
                     } catch (IndexOutOfBoundsException e) {
@@ -1075,7 +1075,7 @@ public class Main {
                     zielCol = cols + 2;
 
                     try {
-                        if (Schachbrett[zielRow][zielCol] == null || Schachbrett[zielRow][zielCol].equals(" ")) {
+                        if (Schachbrett[zielRow][zielCol] != null && Schachbrett[zielRow][zielCol].equals(" ")) {
                             Schachbrett[zielRow][zielCol] = "\u001B[32m*\u001B[0m";
                         }
                     } catch (IndexOutOfBoundsException e) {
@@ -1087,7 +1087,7 @@ public class Main {
                     zielCol = cols + 2;
 
                     try {
-                        if (Schachbrett[zielRow][zielCol] == null || Schachbrett[zielRow][zielCol].equals(" ")) {
+                        if (Schachbrett[zielRow][zielCol] != null && Schachbrett[zielRow][zielCol].equals(" ")) {
                             Schachbrett[zielRow][zielCol] = "\u001B[32m*\u001B[0m";
                         }
                     } catch (IndexOutOfBoundsException e) {
@@ -1098,7 +1098,7 @@ public class Main {
                     zielCol = cols + 1;
 
                     try {
-                        if (Schachbrett[zielRow][zielCol] == null || Schachbrett[zielRow][zielCol].equals(" ")) {
+                        if (Schachbrett[zielRow][zielCol] != null && Schachbrett[zielRow][zielCol].equals(" ")) {
                             Schachbrett[zielRow][zielCol] = "\u001B[32m*\u001B[0m";
                         }
                     } catch (IndexOutOfBoundsException e) {
@@ -1110,7 +1110,7 @@ public class Main {
                     zielCol = cols - 1;
 
                     try {
-                        if (Schachbrett[zielRow][zielCol] == null || Schachbrett[zielRow][zielCol].equals(" ")) {
+                        if (Schachbrett[zielRow][zielCol] != null && Schachbrett[zielRow][zielCol].equals(" ")) {
                             Schachbrett[zielRow][zielCol] = "\u001B[32m*\u001B[0m";
                         }
                     } catch (IndexOutOfBoundsException e) {
@@ -1121,7 +1121,7 @@ public class Main {
                     zielCol = cols - 2;
 
                     try {
-                        if (Schachbrett[zielRow][zielCol] == null || Schachbrett[zielRow][zielCol].equals(" ")) {
+                        if (Schachbrett[zielRow][zielCol] != null && Schachbrett[zielRow][zielCol].equals(" ")) {
                             Schachbrett[zielRow][zielCol] = "\u001B[32m*\u001B[0m";
                         }
                     } catch (IndexOutOfBoundsException e) {
@@ -1133,7 +1133,7 @@ public class Main {
                     zielCol = cols - 2;
 
                     try {
-                        if (Schachbrett[zielRow][zielCol] == null || Schachbrett[zielRow][zielCol].equals(" ")) {
+                        if (Schachbrett[zielRow][zielCol] != null && Schachbrett[zielRow][zielCol].equals(" ")) {
                             Schachbrett[zielRow][zielCol] = "\u001B[32m*\u001B[0m";
                         }
                     } catch (IndexOutOfBoundsException e) {
@@ -1144,13 +1144,19 @@ public class Main {
                     zielCol = cols - 1;
 
                     try {
-                        if (Schachbrett[zielRow][zielCol] == null || Schachbrett[zielRow][zielCol].equals(" ")) {
+                        if (Schachbrett[zielRow][zielCol] != null && Schachbrett[zielRow][zielCol].equals(" ")) {
                             Schachbrett[zielRow][zielCol] = "\u001B[32m*\u001B[0m";
                         }
                     } catch (IndexOutOfBoundsException e) {
 
                     }
                     return true;
+                }
+
+                // Wenn die Spielfigur ein Springer ist:
+
+                if (Spielfiguren[i].getName().equals("Läufer") && Spielfiguren[i].getFarbe().equals("Weiß")) {
+
                 }
 
             }
