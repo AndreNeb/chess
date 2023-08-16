@@ -1,5 +1,4 @@
 // FIXME: Man soll eine Info ausgeben, wenn man versucht, eine Figur zu Bewegen, die man nicht bewegen kann, weil direkt vor einem zB eine eigene Figur steht (ein Turm wird am Anfang zB von zwei Figuren eingeschlossen)
-// FIXME: Auch bei Zieleingabe überprüfen, ob das eine valide Schachbrettposition ist
 // TODO: Spezielle Spielzüge beachten (En passant, Bauernumwandlung & Rochade)
 // TODO: README verbessern & auf Englisch schreiben
 // TODO: Check if Checkmate
