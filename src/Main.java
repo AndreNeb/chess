@@ -1552,6 +1552,109 @@ public class Main {
                     return true;
                 }
 
+
+                if (Spielfiguren[i].getName().equals("King") && Spielfiguren[i].getFarbe().equals("Weiß")) {
+                    int rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    int cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+
+                    int zielRow = rows + 1;
+                    int zielCol = cols;
+
+                    try {
+                        if (Schachbrett[zielRow][zielCol] != null && Schachbrett[zielRow][zielCol].equals(" ")) {
+                            Schachbrett[zielRow][zielCol] = "*";
+                        }
+                    } catch (IndexOutOfBoundsException e) {
+
+                    }
+
+                    zielRow = rows;
+                    zielCol = cols - 1;
+
+                    try {
+                        if (Schachbrett[zielRow][zielCol] != null && Schachbrett[zielRow][zielCol].equals(" ")) {
+                            Schachbrett[zielRow][zielCol] = "*";
+                        }
+                    } catch (IndexOutOfBoundsException e) {
+
+                    }
+
+
+                    zielRow = rows - 1;
+                    zielCol = cols;
+
+                    try {
+                        if (Schachbrett[zielRow][zielCol] != null && Schachbrett[zielRow][zielCol].equals(" ")) {
+                            Schachbrett[zielRow][zielCol] = "*";
+                        }
+                    } catch (IndexOutOfBoundsException e) {
+
+                    }
+
+                    zielRow = rows;
+                    zielCol = cols + 1;
+
+                    try {
+                        if (Schachbrett[zielRow][zielCol] != null && Schachbrett[zielRow][zielCol].equals(" ")) {
+                            Schachbrett[zielRow][zielCol] = "*";
+                        }
+                    } catch (IndexOutOfBoundsException e) {
+
+                    }
+                    return true;
+                }
+
+
+                if (Spielfiguren[i].getName().equals("King") && Spielfiguren[i].getFarbe().equals("Grün")) {
+                    int rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    int cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+
+                    int zielRow = rows + 1;
+                    int zielCol = cols;
+
+                    try {
+                        if (Schachbrett[zielRow][zielCol] != null && Schachbrett[zielRow][zielCol].equals(" ")) {
+                            Schachbrett[zielRow][zielCol] = "\u001B[32m*\u001B[0m";
+                        }
+                    } catch (IndexOutOfBoundsException e) {
+
+                    }
+
+                    zielRow = rows;
+                    zielCol = cols - 1;
+
+                    try {
+                        if (Schachbrett[zielRow][zielCol] != null && Schachbrett[zielRow][zielCol].equals(" ")) {
+                            Schachbrett[zielRow][zielCol] = "\u001B[32m*\u001B[0m";
+                        }
+                    } catch (IndexOutOfBoundsException e) {
+
+                    }
+
+
+                    zielRow = rows - 1;
+                    zielCol = cols;
+
+                    try {
+                        if (Schachbrett[zielRow][zielCol] != null && Schachbrett[zielRow][zielCol].equals(" ")) {
+                            Schachbrett[zielRow][zielCol] = "\u001B[32m*\u001B[0m";
+                        }
+                    } catch (IndexOutOfBoundsException e) {
+
+                    }
+
+                    zielRow = rows;
+                    zielCol = cols + 1;
+
+                    try {
+                        if (Schachbrett[zielRow][zielCol] != null && Schachbrett[zielRow][zielCol].equals(" ")) {
+                            Schachbrett[zielRow][zielCol] = "\u001B[32m*\u001B[0m";
+                        }
+                    } catch (IndexOutOfBoundsException e) {
+
+                    }
+                    return true;
+                }
             }
         }
         return false;
