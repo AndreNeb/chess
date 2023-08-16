@@ -1,3 +1,5 @@
+// FIXME: Man soll eine Info ausgeben, wenn man versucht, eine Figur zu Bewegen, die man nicht bewegen kann, weil direkt vor einem zB eine eigene Figur steht (ein Turm wird am Anfang zB von zwei Figuren eingeschlossen)
+// FIXME: Auch bei Zieleingabe überprüfen, ob das eine valide Schachbrettposition ist
 // TODO: Spezielle Spielzüge beachten (En passant, Bauernumwandlung & Rochade)
 // TODO: README verbessern & auf Englisch schreiben
 // TODO: Check if Checkmate
@@ -251,6 +253,12 @@ public class Main {
             System.out.println();
             System.out.println("Wohin möchtest du sie bewegen?: ");
             String eingabeZielPosition = sc.next();
+
+            if (!checkIfPositionIsValid(eingabeZielPosition)){
+                System.out.println("Das ist keine Position auf dem Schachbrett!");
+                vorübergehenderFarbenCounter--;
+                continue;
+            }
 
             if (!checkIfFigurIsInTheWay(Schachbrett, Spielfiguren, eingabeUrsprünglichePosition, eingabeZielPosition)) {
                 vorübergehenderFarbenCounter--;
@@ -1659,6 +1667,141 @@ public class Main {
             }
         }
         return false;
+    }
+
+    public static boolean checkIfPositionIsValid(String position) {
+        switch (position) {
+            case "A8":
+                return true;
+            case "B8":
+                return true;
+            case "C8":
+                return true;
+            case "D8":
+                return true;
+            case "E8":
+                return true;
+            case "F8":
+                return true;
+            case "G8":
+                return true;
+            case "H8":
+                return true;
+            case "A7":
+                return true;
+            case "B7":
+                return true;
+            case "C7":
+                return true;
+            case "D7":
+                return true;
+            case "E7":
+                return true;
+            case "F7":
+                return true;
+            case "G7":
+                return true;
+            case "H7":
+                return true;
+            case "A6":
+                return true;
+            case "B6":
+                return true;
+            case "C6":
+                return true;
+            case "D6":
+                return true;
+            case "E6":
+                return true;
+            case "F6":
+                return true;
+            case "G6":
+                return true;
+            case "H6":
+                return true;
+            case "A5":
+                return true;
+            case "B5":
+                return true;
+            case "C5":
+                return true;
+            case "D5":
+                return true;
+            case "E5":
+                return true;
+            case "F5":
+                return true;
+            case "G5":
+                return true;
+            case "H5":
+                return true;
+            case "A4":
+                return true;
+            case "B4":
+                return true;
+            case "C4":
+                return true;
+            case "D4":
+                return true;
+            case "E4":
+                return true;
+            case "F4":
+                return true;
+            case "G4":
+                return true;
+            case "H4":
+                return true;
+            case "A3":
+                return true;
+            case "B3":
+                return true;
+            case "C3":
+                return true;
+            case "D3":
+                return true;
+            case "E3":
+                return true;
+            case "F3":
+                return true;
+            case "G3":
+                return true;
+            case "H3":
+                return true;
+            case "A2":
+                return true;
+            case "B2":
+                return true;
+            case "C2":
+                return true;
+            case "D2":
+                return true;
+            case "E2":
+                return true;
+            case "F2":
+                return true;
+            case "G2":
+                return true;
+            case "H2":
+                return true;
+            case "A1":
+                return true;
+            case "B1":
+                return true;
+            case "C1":
+                return true;
+            case "D1":
+                return true;
+            case "E1":
+                return true;
+            case "F1":
+                return true;
+            case "G1":
+                return true;
+            case "H1":
+                return true;
+            default:
+                return false;
+        }
     }
 
 
