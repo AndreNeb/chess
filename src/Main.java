@@ -1283,6 +1283,143 @@ public class Main {
                     }
                     return true;
                 }
+
+
+                // Wenn die Spielfigur eine Queen ist:
+
+                if (Spielfiguren[i].getName().equals("Queen") && Spielfiguren[i].getFarbe().equals("Weiß")) {
+
+                    // Anteil des weißen Turmes:
+
+                    int rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    int cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+
+
+                    while (true) {
+                        try {
+                            rows--;
+                            if (Schachbrett[rows][cols] == null || !Schachbrett[rows][cols].equals(" ")) {
+                                break;
+                            }
+                            Schachbrett[rows][cols] = "*";
+                        } catch (IndexOutOfBoundsException e) {
+                            break;
+                        }
+                    }
+
+                    rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+
+                    while (true) {
+                        try {
+                            rows++;
+                            if (Schachbrett[rows][cols] == null || !Schachbrett[rows][cols].equals(" ")) {
+                                break;
+                            }
+                            Schachbrett[rows][cols] = "*";
+                        } catch (IndexOutOfBoundsException e) {
+                            break;
+                        }
+
+                    }
+
+                    rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+
+                    while (true) {
+                        try {
+                            cols++;
+                            if (Schachbrett[rows][cols] == null || !Schachbrett[rows][cols].equals(" ")) {
+                                break;
+                            }
+                            Schachbrett[rows][cols] = "*";
+                        } catch (IndexOutOfBoundsException e) {
+                            break;
+                        }
+                    }
+
+                    rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+
+                    while (true) {
+                        try {
+                            cols--;
+                            if (Schachbrett[rows][cols] == null || !Schachbrett[rows][cols].equals(" ")) {
+                                break;
+                            }
+                            Schachbrett[rows][cols] = "*";
+                        } catch (IndexOutOfBoundsException e) {
+                            break;
+                        }
+                    }
+
+                    // Anteil des weißen Läufers:
+
+                    rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+
+                    while (true) {
+                        try {
+                            rows--;
+                            cols--;
+                            if (Schachbrett[rows][cols] == null || !Schachbrett[rows][cols].equals(" ")) {
+                                break;
+                            }
+                            Schachbrett[rows][cols] = "*";
+                        } catch (IndexOutOfBoundsException e) {
+                            break;
+                        }
+                    }
+
+                    rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+                    while (true) {
+                        try {
+                            rows--;
+                            cols++;
+                            if (Schachbrett[rows][cols] == null || !Schachbrett[rows][cols].equals(" ")) {
+                                break;
+                            }
+                            Schachbrett[rows][cols] = "*";
+                        } catch (IndexOutOfBoundsException e) {
+                            break;
+                        }
+                    }
+
+                    rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+                    while (true) {
+                        try {
+                            rows++;
+                            cols++;
+                            if (Schachbrett[rows][cols] == null || !Schachbrett[rows][cols].equals(" ")) {
+                                break;
+                            }
+                            Schachbrett[rows][cols] = "*";
+                        } catch (IndexOutOfBoundsException e) {
+                            break;
+                        }
+                    }
+
+                    rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+                    while (true) {
+                        try {
+                            rows++;
+                            cols--;
+                            if (Schachbrett[rows][cols] == null || !Schachbrett[rows][cols].equals(" ")) {
+                                break;
+                            }
+                            Schachbrett[rows][cols] = "*";
+                        } catch (IndexOutOfBoundsException e) {
+                            break;
+                        }
+                    }
+
+                    return true;
+                }
+
+
             }
         }
         return false;
