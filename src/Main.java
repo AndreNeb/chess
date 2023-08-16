@@ -239,8 +239,7 @@ public class Main {
 
             for (int i = 0; i < Schachbrett.length; i++) {
                 for (int j = 0; j < Schachbrett[i].length; j++) {
-                    if (Schachbrett[i][j] == null)
-                        continue;
+                    if (Schachbrett[i][j] == null) continue;
                     if (Schachbrett[i][j].equals("*") || Schachbrett[i][j].equals("\u001B[32m*\u001B[0m")) {
                         Schachbrett[i][j] = " ";
                     }
@@ -1153,12 +1152,137 @@ public class Main {
                     return true;
                 }
 
-                // Wenn die Spielfigur ein Springer ist:
+                // Wenn die Spielfigur ein Läufer ist:
 
                 if (Spielfiguren[i].getName().equals("Läufer") && Spielfiguren[i].getFarbe().equals("Weiß")) {
+                    int rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    int cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
 
+                    while (true) {
+                        try {
+                            rows--;
+                            cols--;
+                            if (Schachbrett[rows][cols] == null || !Schachbrett[rows][cols].equals(" ")) {
+                                break;
+                            }
+                            Schachbrett[rows][cols] = "*";
+                        } catch (IndexOutOfBoundsException e) {
+                            break;
+                        }
+                    }
+
+                    rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+                    while (true) {
+                        try {
+                            rows--;
+                            cols++;
+                            if (Schachbrett[rows][cols] == null || !Schachbrett[rows][cols].equals(" ")) {
+                                break;
+                            }
+                            Schachbrett[rows][cols] = "*";
+                        } catch (IndexOutOfBoundsException e) {
+                            break;
+                        }
+                    }
+
+                    rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+                    while (true) {
+                        try {
+                            rows++;
+                            cols++;
+                            if (Schachbrett[rows][cols] == null || !Schachbrett[rows][cols].equals(" ")) {
+                                break;
+                            }
+                            Schachbrett[rows][cols] = "*";
+                        } catch (IndexOutOfBoundsException e) {
+                            break;
+                        }
+                    }
+
+                    rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+                    while (true) {
+                        try {
+                            rows++;
+                            cols--;
+                            if (Schachbrett[rows][cols] == null || !Schachbrett[rows][cols].equals(" ")) {
+                                break;
+                            }
+                            Schachbrett[rows][cols] = "*";
+                        } catch (IndexOutOfBoundsException e) {
+                            break;
+                        }
+                    }
+                    return true;
                 }
 
+
+                if (Spielfiguren[i].getName().equals("Läufer") && Spielfiguren[i].getFarbe().equals("Grün")) {
+                    int rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    int cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+
+                    while (true) {
+                        try {
+                            rows--;
+                            cols--;
+                            if (Schachbrett[rows][cols] == null || !Schachbrett[rows][cols].equals(" ")) {
+                                break;
+                            }
+                            Schachbrett[rows][cols] = "\u001B[32m*\u001B[0m";
+                        } catch (IndexOutOfBoundsException e) {
+                            break;
+                        }
+                    }
+
+                    rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+
+                    while (true) {
+                        try {
+                            rows--;
+                            cols++;
+                            if (Schachbrett[rows][cols] == null || !Schachbrett[rows][cols].equals(" ")) {
+                                break;
+                            }
+                            Schachbrett[rows][cols] = "\u001B[32m*\u001B[0m";
+                        } catch (IndexOutOfBoundsException e) {
+                            break;
+                        }
+                    }
+
+                    rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+                    while (true) {
+                        try {
+                            rows++;
+                            cols++;
+                            if (Schachbrett[rows][cols] == null || !Schachbrett[rows][cols].equals(" ")) {
+                                break;
+                            }
+                            Schachbrett[rows][cols] = "\u001B[32m*\u001B[0m";
+                        } catch (IndexOutOfBoundsException e) {
+                            break;
+                        }
+                    }
+
+                    rows = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[0]);
+                    cols = Integer.parseInt(convertedEingabeUrsprünglichePositionArray[1]);
+                    while (true) {
+                        try {
+                            rows++;
+                            cols--;
+                            if (Schachbrett[rows][cols] == null || !Schachbrett[rows][cols].equals(" ")) {
+                                break;
+                            }
+                            Schachbrett[rows][cols] = "\u001B[32m*\u001B[0m";
+                        } catch (IndexOutOfBoundsException e) {
+                            break;
+                        }
+                    }
+                    return true;
+                }
             }
         }
         return false;
