@@ -1,6 +1,5 @@
 // TODO: Spezielle Spielzüge beachten (En passant, Bauernumwandlung & Rochade)
 // TODO: README verbessern & auf Englisch schreiben
-// TODO: ShowPossibilities() mit * erstellen (Aufpassen bei checkIfFigurIsInWay())
 // TODO: Check if Checkmate
 // TODO: Check if Chess
 
@@ -231,7 +230,8 @@ public class Main {
                 continue;
             }
 
-            boolean checkVariable = showPossibleMoves(Schachbrett, eingabeUrsprünglichePosition, Spielfiguren); // TODO
+
+            boolean checkVariable = showPossibleMoves(Schachbrett, eingabeUrsprünglichePosition, Spielfiguren);
 
             if (checkVariable) {
                 Ausgabe(Schachbrett, vonWeißGeschlageneSpielfiguren, vonGrünGeschlageneSpielfiguren);
@@ -246,6 +246,7 @@ public class Main {
                 }
 
             }
+
 
             System.out.println();
             System.out.println("Wohin möchtest du sie bewegen?: ");
